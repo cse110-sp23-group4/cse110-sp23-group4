@@ -165,4 +165,6 @@ h2, label, .instructions {
 	max-height: 400px;
 	/* Make clouds translucent to look like real clouds */
 	opacity: 0.4;
+	/* Clouds won't interfere with textbox */
+	z-index: -10;
 }
