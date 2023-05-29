@@ -7,6 +7,9 @@
     "jest-puppeteer": "^9.0.0",
     "puppeteer": "^20.4.0"
   },
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "test": "jest"
   },

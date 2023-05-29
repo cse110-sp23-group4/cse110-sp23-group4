@@ -5,12 +5,12 @@ const baseOptions = {
     command: 'python3 -m http.server',
     port: 8000
   }
-}
+};
 
 const ciPipelineOptions = {
   launch: {
     executablePath: '/usr/bin/google-chrome-stable',
-    headless: true,
+    headless: false,
     slowMo: 25,
     args: [
       '--ignore-certificate-errors',
@@ -21,6 +21,6 @@ const ciPipelineOptions = {
     ]
   },
   server: baseOptions.server
-}
+};
 
 module.exports = ci ? ciPipelineOptions : baseOptions;
