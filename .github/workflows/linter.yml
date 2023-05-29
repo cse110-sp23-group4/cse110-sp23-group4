@@ -18,7 +18,7 @@ jobs:
             - name: Create JSHint config file
               run: |
                 echo '{
-                  "esversion": 7,
+                  "esversion": 8,
                   "loopfunc": true
                 }' > .jshintrc
             - name: Lint all JS files
