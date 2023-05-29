@@ -2,85 +2,120 @@
 body, h1, p {
     margin: 0;
     padding: 0;
-  }
+}
 
-/* Makes entire page's background black*/
+/* Download all fonts needed for the landing page */ 
+@font-face {
+    font-family: "abrilFatface";
+    src: url("assets/fonts/AbrilFatface-Regular.ttf");
+}
+@font-face {
+    font-family: "playfairDisplay";
+    src: url("assets/fonts/PlayfairDisplaySC-Regular.ttf");
+}
+
+/* Adds background picture of hut and change background colour to match*/ 
 html {
-    background-color: black;
+    background: url(assets/landing-page/backdrop.png) no-repeat center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    background-color: rgb(2, 31, 2); /*change background color to match hut picture */
 }
   
-/* Styles the body */
-body {
-color: white; 
-font-family: 'Arial', sans-serif;
-text-align: center;
-}
-
 /* Styles the header */
 header {
-/*background-color: #1B4721;*/
-padding: 20px;
-text-align: center;
+    /*background-color: #1B4721;*/
+    border: 2px solid red;
+    border: transparent; 
+    padding-top: 20px;
+    margin: 0; 
+    text-align: center;
 }
 
 /* Styles the heading/title text*/
 h1 {
-font-size: 40px;
-font-weight: bold;
-color: white;
-/*color: #FFFFFF;*/
-margin-bottom: 10px;
+    border: 2px solid red; 
+    border: transparent; 
+    margin: 0; 
+    padding: 0; 
+    font-family: "abrilFatface", serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(2, 29, 7);
+    /*color: #FFFFFF;*/
+    margin-bottom: 10px;
 }
 
 /* Styles the frame around the introduction text*/
 .storyFrame {
-/* background-color: #1B4721; */
-border: 2px solid red; 
-margin: 0 auto; 
-padding: 0;
-border: 0;
-width: 400px; /* Adjust the width of the container as needed */
-height: 300px; /* Adjust the height of the container as needed */
-display: flex;
-justify-content: center;
-align-items: center;
-/*background-color: #1B4721; *//* Adjust the background color as desired */
+    position: relative; 
+    border: 2px solid red; 
+    border-radius: 50px;
+    border: 0;
+
+    margin: 0 auto; 
+    padding: 0;
+    top: 100%; 
+
+    width: 600px;
+    height: 300px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Styles the text inside the frame */
 .storyFrame p {
-text-align: center;
-font-size: 18px;
-line-height: 1.5;
-margin-top: 10px; 
-margin-bottom: 10px;
-padding: 20px;
-background-color: #1B4721;
+    color: white;
+    font-family: "playfairDisplay", serif; 
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: transparent;
+    background-color: rgba(6, 43, 6, 0.5);
+    border-radius: 30px;
+    /*background-color: #1B4721;*/
+}
+
+.questionFrame {
+  width: 400px;
+  background-color: black ;
+  margin: 0 auto;
 }
 
 /*Styles the question*/ 
-#question {
-font-size: 20pt; 
-margin-bottom: 10px;
-background-color: black ;
-}
+/* TODO: We may not need the question (design choice)*/
+/*#question {
+    font-size: 20pt; 
+    margin-bottom: 10px;
+    background-color: black ;
+    text-align: center;
+}*/
 
 /* Styles the enter button*/
-button {
-display: block;
-margin: 0 auto;
-padding: 10px 20px;
-background-color: #8B4513;
-font-size: 30pt;
-color: #FFFFFF;
-text-decoration: none;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-transition: background-color 0.3s ease;
+button { 
+    font-family: "playfairDisplay", serif;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    /*background-color: #8B4513;*/
+    background-color: rgba(139, 69, 19, 0.5);
+    font-size: 30pt;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 /*Animates the enter button*/
 button:hover {
-background-color: rgb(8, 50, 65);
+    background-color: rgb(143, 122, 18);
+    color: black; 
 }

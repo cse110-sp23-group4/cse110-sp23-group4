@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>This is the prototype Saved Readings page</title>
+    <title>This is the prototype history page</title>
     <link rel="stylesheet" href="saved-readings-style.css">
   </head>
   <body>
-    <div class="savedReadingsWrapper"> 
+	<button class="backButton">Back to Menu</button>
+	<h1 id="title">Saved Readings</h1>
+    <div class="historyWrapper"> 
       <!-- Items in here will grow the flexbox vertically -->
+	  <!-- Example Fortune -->
+	  <div class="fortune">
+		<h3 class="fortuneText">Fortune: Fortune text goes here</h3>
+		<h3 class="fortuneCategory">Category: Category goes here</h3>
+		<h3 class="fortuneDate">Date: Date goes here</h3>
+	  </div>
     </div>
+	<!-- Temporary-adds fortunes to see how it will work-->
+	<button class="tempAddButton">Temporary Add Fortunes Button</button>
+	<!-- Temporary-clears fortunes from local storage and the page -->
+	<button class="tempClearButton">Temporary Clear Fortunes Button</button>
     <script type="text/javascript" src="saved-readings-script.js"></script>
   </body>
 </html>

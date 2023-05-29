@@ -1,11 +1,31 @@
-.card-container {
-  display: flex;
+/* Make entire page's background black with image */
+html {
+  background: url(assets/card-page/backdrop.png) no-repeat center center fixed; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-color: black;
 }
 
-.card-container > tarot-card {
-  background-color: #ff0000;
-  margin: 10px;
-  padding: 20px;
-  border: 5px;
-  border-color: #000000;
+.buttons {
+  position: absolute;
+  top: 80%;
+  left: 38%;
+}
+
+#output {
+  background: #aaaaaa;
+}
+
+.card-container {
+  position: absolute;
+  display: flex;
+  left: 26%;
+  top: 50%;
+  gap: 10px;
+}
+
+.card-container > img:hover {
+  box-shadow: 0 0 10px 5px #00ff00 
 }
