@@ -5,7 +5,7 @@ const baseOptions = {
     command: 'python3 -m http.server',
     port: 8000
   }
-};
+}
 
 const ciPipelineOptions = {
   launch: {
@@ -21,6 +21,6 @@ const ciPipelineOptions = {
     ]
   },
   server: baseOptions.server
-};
+}
 
 module.exports = ci ? ciPipelineOptions : baseOptions;
