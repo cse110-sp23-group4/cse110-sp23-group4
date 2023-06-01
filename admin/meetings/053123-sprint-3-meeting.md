@@ -25,8 +25,10 @@ ____
   - We are in a good place overall
   - JSDocs automation has been set up by some other groups. We should ask him about that.
   - This week will be focused on animations and testing.  
-  - Status Video submitted <br>
+  - Status Video submitted 
+
 <br>
+
 - **Issues / New Features**: 
     - Entering Hut Animation (Josh)
     - The "Woosh" animation (Ezgi, Helen)
@@ -37,6 +39,8 @@ ____
       -  Consistent fonts and themes
     - Card Designs - Back of the cards (Khanh)
     - On predict button (?)
-      - All cards woosh out leaving one card along with the prediction<br>. 
+      - All cards woosh out leaving one card along with the prediction.
+
+<br>
   
-- All other people will focus on testing. [See Spring 3 Project Board](https://github.com/orgs/cse110-sp23-group4/projects/5/views/1).
+- All other people will focus on testing. [See Sprint 3 Project Board](https://github.com/orgs/cse110-sp23-group4/projects/5/views/1).
