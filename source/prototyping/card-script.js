@@ -240,5 +240,7 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
     if (numbers.indexOf(randomNumber) === -1) {
       numbers.push(randomNumber);
     }
+  }
+  
   return numbers;
 }
