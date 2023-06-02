@@ -2,6 +2,15 @@
 
 Some examples or templates are provided below.  
 
+## File Header
+```java
+/**
+ * @file [file description] - Last Modified: MM/DD/YYYY
+ * @author [insert name]
+ * @author [insert name]
+ */
+```
+
 ## Variables
 ```java
 /**

@@ -42,13 +42,10 @@ html {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  font-family: Tangerine;
   font-size: 20px;
   font-weight: bold;
   text-shadow: 2px 2px 3px #ad08c7;
   color:white;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
   text-align: center;
 }
 
@@ -105,7 +102,7 @@ button:hover {
 
 /* Styles the category Button text */
 .categoryButton > p{
-  font-family: Tangerine;
+  font-family: 'times new roman';
   font-size: 20px;
   font-weight: bold;
   text-shadow: 2px 2px 3px #ad08c7;

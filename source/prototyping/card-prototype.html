@@ -3,25 +3,25 @@
   <head>
     <title>Tarot Beta</title>
     <link rel="stylesheet" href="card-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   </head>
   <body>
+    <button id="returnMenu" type="button">Menu Page</button>
+    <div id="cardWrapper" class="card-container">
+      <img class="card" id="card1" src="assets/card-page/backside.png" alt="Hooded figure in graveyard" />
+      <img class="card" id="card2" src="assets/card-page/backside.png" alt="Lonely figure with a long road ahead" />
+      <img class="card" id="card3" src="assets/card-page/backside.png" alt="A well in a forest" />
+      <img class="card" id="card4" src="assets/card-page/backside.png" alt="A colorful river" />
+      <img class="card" id="card5" src="assets/card-page/backside.png" alt="A stormy sea" />
+      <img class="card" id="card6" src="assets/card-page/backside.png" alt="A box" />
+    </div>
     <div class="buttons">
-      <button id="returnMenu" type="button">Menu Page</button>
       <button id="getTarot" type="button">Predict</button>
+      <button id="saveFortune" type="button">Save Fortune</button>
       <p id="output"></p>
     </div>
 
-    <div id="cardWrapper" class="card-container">
-      <img class="card" id="disastrous" src="assets/card-page/disastrous.png" alt="Hooded figure in graveyard" />
-      <img class="card" id="hopeful" src="assets/card-page/hopeful.png" alt="Lonely figure with a long road ahead" />
-      <img class="card" id="neutral" src="assets/card-page/neutral.png" alt="A well in a forest" />
-      <img class="card" id="optimistic" src="assets/card-page/optimistic.png" alt="A colorful river" />
-      <img class="card" id="pessimistic" src="assets/card-page/pessimistic.png" alt="A stormy sea" />
-      <img class="card" id="unknown" src="assets/card-page/unknown.png" alt="A box" />
-    </div>
 
-
-
-    <script type="text/javascript" src="card-script.js"></script>
+    <script type="module" src="card-script.js"></script>
   </body>
 </html>
