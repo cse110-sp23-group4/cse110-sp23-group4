@@ -1,7 +1,7 @@
 describe('Basic user flow for Website', () => {
   // First, visit the landing page
   beforeAll(async () => {
-    await page.goto('http://localhost:8000/landing-prototype.html');
+    await page.goto('http://localhost:8000/prototyping/landing-prototype.html');
   });
 
   // Check that button leads to next page
