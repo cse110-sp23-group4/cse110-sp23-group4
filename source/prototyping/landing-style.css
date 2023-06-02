@@ -17,10 +17,10 @@ body, h1, p {
 /* Adds background picture of hut and change background colour to match*/ 
 html {
     background: url(assets/landing-page/backdrop.png) no-repeat center center fixed;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
+    -webkit-background-size: 80%;
+    -moz-background-size: 80%;
+    -o-background-size: 80%;
+    background-size: 80%;
     background-color: rgb(2, 31, 2); /*change background color to match hut picture */
 }
   
@@ -43,7 +43,7 @@ h1 {
     font-family: "abrilFatface", serif;
     font-size: 60px;
     font-weight: bold;
-    color: rgb(2, 29, 7);
+    color: white; /*rgb(2, 29, 7);*/
     /*color: #FFFFFF;*/
     margin-bottom: 10px;
 }
