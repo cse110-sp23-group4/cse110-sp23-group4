@@ -241,6 +241,5 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
       numbers.push(randomNumber);
     }
   }
-  
   return numbers;
 }
