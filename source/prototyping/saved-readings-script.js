@@ -101,7 +101,7 @@ export function addFortune(fortuneText, category, date) {
 
 	// Check if fortune already exists, before choosing to save fortune or not
 	if (checkDuplicate([fortuneText,category,modifiedDate]) == -1) {
-		savedFortunes.push([fortuneText,category,modifiedDate]);
+		savedFortunes.push([fortuneText,category,date]);
 		localStorage.setItem('fortunes', JSON.stringify(savedFortunes));
 	}
 }
