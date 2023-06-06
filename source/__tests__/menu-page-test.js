@@ -1,6 +1,7 @@
 /**
- * @file Contains puppeteer E2E tests for the menu page of the web app - Last Modified: 06/04/2023
- * @author Abijit Jayachandran, Brandon Imai
+ * @file Contains puppeteer E2E tests for the menu page of the web app - Last Modified: 06/06/2023
+ * @author Abijit Jayachandran
+ * @author Brandon Imai
  */
 
 describe('Basic user flow for Menu Page', () => {
