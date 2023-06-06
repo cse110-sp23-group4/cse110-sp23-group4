@@ -1,4 +1,11 @@
 /**
+ * @file Contains the script to manage the landing page's functionality including the zoom in animation - Last Modified: 06/05/2023
+ * @author Joshua Tan 
+ * @author Abijit Jayachandran
+ */
+
+
+/**
  * A reference to the html element of the page which defines the background-image
  * @type {HTMLElement | null}
  */
@@ -40,7 +47,8 @@ function enterHut() {
     /* Move background to line up with the hut door */
     hutBackground.style.backgroundPosition = '50% 77.5%';
     /* Zoom into the background image by 800% in 2 seconds */
-    hutBackground.style.backgroundSize = '1200%';
+    hutBackground.style['background-size'] = '300%';
+    //hutBackground.style.transition = 'zoomIn 2s forwards'
 }
 
 /* Add the listener to the landing page button */
