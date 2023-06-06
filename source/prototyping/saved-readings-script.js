@@ -165,7 +165,7 @@ function displayFortunes() {
 			year: "numeric",
 			month: "long",
 			day: "numeric",
-		});;
+		});
 		fortuneDate.classList.add("fortuneDate");
 		// Add Delete Button
 		let deleteButton = document.createElement('button');
