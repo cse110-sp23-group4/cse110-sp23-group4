@@ -1,13 +1,13 @@
-# CSE 110 Powell Rangers Sprint 1 Retrospective
-*May 23, 2023* | 4:00pm - 5:00pm | Peterson Hall
+# CSE 110 Powell Rangers Sprint 2 Review
+*May 28, 2023* | 4:00pm - 5:00pm | Zoom
 
 ## Attendance
 ___
 **Present:** Nakul, Abijit, Brandon, Ezgi
 
-**Missing:** Christian, 
+**Missing:** Christian,
 
-## Sprint 1 Review
+## Sprint 2 Review
 ___
 - Helen and Michi: Menu Page
   - Not here
