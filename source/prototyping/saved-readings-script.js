@@ -160,7 +160,12 @@ function displayFortunes() {
 		fortuneCategory.classList.add("fortuneCategory");
 		// creates an h3 element that holds fortune date (specific to locale)
 		let fortuneDate = document.createElement("h3");
-		fortuneDate.innerHTML = arr[i][2];
+		fortuneDate.innerHTML = new Date(arr[i][2]).toLocaleDateString(undefined, {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});;
 		fortuneDate.classList.add("fortuneDate");
 		// Add Delete Button
 		let deleteButton = document.createElement('button');
