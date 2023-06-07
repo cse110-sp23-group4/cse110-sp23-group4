@@ -81,7 +81,7 @@ function init() {
       break;
   }
 
-  typePrediction(`Please Select ${selectCount} Card.`)
+  typePrediction(`Please Select ${selectCount} Card.`);
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -199,7 +199,7 @@ async function generatePrediction() {
     centerSelectedCard();
 		
     /* Give the user a prediction */
-    typePrediction(outputContent)
+    typePrediction(outputContent);
 
     // Remove listeners
     predictButton.removeEventListener("click", generatePrediction);
@@ -209,7 +209,7 @@ async function generatePrediction() {
 
   } else {
     /* Display a message that the user selected nothing */
-    typePrediction(`Please Select ${selectCount} Card.`)
+    typePrediction(`Please Select ${selectCount} Card.`);
   }
 }
 
@@ -234,7 +234,7 @@ function typePrediction(prediction) {
     if (predictionCharsIndex === predictionChars.length) {
       clearInterval(typeOutputInterval);
     }
-  }, 50)
+  }, 50);
 }
 
 
