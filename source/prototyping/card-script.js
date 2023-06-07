@@ -81,8 +81,7 @@ function init() {
       break;
   }
 
-  let predictOut = document.getElementById("output");
-  predictOut.innerText = `Please Select ${selectCount} Card.`;
+  typePrediction(`Please Select ${selectCount} Card.`)
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -200,7 +199,7 @@ async function generatePrediction() {
     centerSelectedCard();
 		
     /* Give the user a prediction */
-    predictOut.innerHTML = `${outputContent}`;
+    typePrediction(outputContent)
 
     // Remove listeners
     predictButton.removeEventListener("click", generatePrediction);
@@ -210,9 +209,34 @@ async function generatePrediction() {
 
   } else {
     /* Display a message that the user selected nothing */
-    predictOut.innerHTML = `Please Select ${selectCount} Card.`;
+    typePrediction(`Please Select ${selectCount} Card.`)
   }
 }
+
+/**
+ * Takes in the prediction generate and types out the 
+ * prediction results by updating the html content character
+ * by character
+ * @param {string} - Predition result to be typed out
+ */
+function typePrediction(prediction) {
+  const predictionChars = prediction.split("");
+  let predictionCharsIndex = 0;
+  const predictOut = document.getElementById("output");
+  predictOut.textContent = "";
+
+  //Interval function used to type out on char at a time
+  const typeOutputInterval = setInterval(()=> {
+    predictOut.textContent +=predictionChars[predictionCharsIndex];
+    predictionCharsIndex++;
+
+    //Finished Typing
+    if (predictionCharsIndex === predictionChars.length) {
+      clearInterval(typeOutputInterval);
+    }
+  }, 50)
+}
+
 
 function chooseCard() {
   const index = selectBuffer.indexOf(this.index);
