@@ -186,8 +186,8 @@ function displayFortunes() {
 }
 /**
  * Function that enables the individual deletion of fortunes from the saved-reading pages.
- * We pass the index of the fortune that is has in the localstorage array
- * and splice the array ti remove that one index. Check if it the index is greater
+ * We pass the index of the fortune that it has in the localstorage array
+ * and splice the array to remove that one index. Check if it the index is greater
  * than -1.
  * @param {int} fortuneIndex - the index of the fortune in the localstorage array
  */
@@ -213,9 +213,17 @@ function checkDuplicate(fortune) {
 	// For each fortune in the localStorage, check if the contents are equal 
 	// to the passed in fortune
 	for (let i = 0; i < savedFortunes.length; i++) {
+		// Convert saved date to modified date string for equal comparisons
+		let modifiedDate = savedFortunes[i][2].toLocaleDateString(undefined, {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
+
 		if (fortune[0] == savedFortunes[i][0]) {
 			if (fortune[1] == savedFortunes[i][1]) {
-				if (fortune[2] == savedFortunes[i][2]) {
+				if (fortune[2] == modifiedDate) {
 					return i;
 				}
 			}
