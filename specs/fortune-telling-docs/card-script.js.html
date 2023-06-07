@@ -26,7 +26,13 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* TODO: The scope of these variables may be adjusted later */
+            <pre class="prettyprint source linenums"><code>/**
+ * @file JavaScript Code for card-prototype.html - Last Modified: 06/04/2023
+ * @author Ezgi Bayraktaroglu
+ * @author Helen Lin
+ */
+
+/* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
 
 
@@ -102,6 +108,9 @@ function init() {
       break;
   }
 
+  let predictOut = document.getElementById("output");
+  predictOut.innerText = `Please Select ${selectCount} Card.`
+
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
 
@@ -110,6 +119,9 @@ function init() {
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
+
+  /* Animate the cards into position */
+  wooshCards();
 
   /* Add event listener save readings button to save a reading */
   saveReadingsButton.addEventListener("click", goToSavedReadings);
@@ -202,16 +214,22 @@ async function generatePrediction() {
     for (let i = 0; i &lt; selectBuffer.length; i++) {
       // Change the images of the cards that were selected
       tarotCards[selectBuffer[i]].src = `assets/card-page/${cards[i]}.png`;
-
       // Pick random fortune response within card subsection to use
       let cardResponse = Math.floor(Math.random() * 2);
 
       outputContent += fortuneResponses[category][cards[i]][cardResponse];
+
+			// Add select class to selected cards so deWoosh animation can occur
+			tarotCards[selectBuffer[i]].classList.add("select");
     }
+		// Animate away the unselected cards
+		dewooshCards();
 
-
+    // Center the selected card
+    centerSelectedCard();
+		
     /* Give the user a prediction */
-    predictOut.innerHTML = `&lt;p>${outputContent}&lt;/p>`;
+    predictOut.innerHTML = `&lt;p>${outputContent}&lt;/p>`;    
   } else {
     /* Display a message that the user selected nothing */
     predictOut.innerHTML = `&lt;p>You did not select enough cards!&lt;p>`;
@@ -222,7 +240,7 @@ function chooseCard (i) {
   const index = selectBuffer.indexOf(i);
   if (index == -1) {
     selectBuffer.push(i);
-    tarotCards[i].style.boxShadow = "0 0 10px 5px #ff0000";
+    tarotCards[i].style.boxShadow = "0 0 10px 5px #ad08c7";
 
     if (selectBuffer.length > selectCount) {
       tarotCards[selectBuffer[0]].style.boxShadow = null;
@@ -233,7 +251,7 @@ function chooseCard (i) {
     tarotCards[i].style.boxShadow = null;
 
     selectBuffer.splice(index, 1);
-  }
+  } 
 }
 
 /**
@@ -272,7 +290,151 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
 
   return numbers;
 }
-</code></pre>
+
+/**
+ * Function to woosh or animate to the cards from a deck on the left
+ * to being layed out for the user to pick
+ * Triggered when the page is loaded.
+ * Assumption: Number of Cards that could be selected from are 6
+ */
+function wooshCards() {
+	for(let i = 0; i &lt; tarotCards.length; i++) {
+		switch (String(tarotCards[i].id)) {
+			case "card1":
+				tarotCards[i].style.setProperty("--changePoint", "-200%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			case "card2":
+				tarotCards[i].style.setProperty("--changePoint", "-300%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			case "card3":
+				tarotCards[i].style.setProperty("--changePoint", "-400%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			case "card4":
+				tarotCards[i].style.setProperty("--changePoint", "-500%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			case "card5":
+				tarotCards[i].style.setProperty("--changePoint", "-600%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			case "card6":
+				tarotCards[i].style.setProperty("--changePoint", "-700%");
+				tarotCards[i].style.animation = "woosh 2s";
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+/**
+ * Function to dewoosh or animate to the left into a deck the unselected cards
+ * Triggered when Predict button is clicked.
+ * Assumption: Number of Cards that could be selected from are 6
+ */
+function dewooshCards() {
+	for(let i = 0; i &lt; tarotCards.length; i++) {
+		if(tarotCards[i].classList == undefined) {
+			break;
+		}
+		if(!tarotCards[i].classList.contains("select")){
+			switch (String(tarotCards[i].id)) {
+        /**Each Case sets css variable --changePoint and triggers deWoosh
+         * keyFrame animation in card-styles.css
+         */
+				case "card1":
+					tarotCards[i].style.setProperty("--changePoint", "-200%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card2":
+					tarotCards[i].style.setProperty("--changePoint", "-300%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card3":
+					tarotCards[i].style.setProperty("--changePoint", "-400%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card4":
+					tarotCards[i].style.setProperty("--changePoint", "-500%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card5":
+					tarotCards[i].style.setProperty("--changePoint", "-600%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card6":
+					tarotCards[i].style.setProperty("--changePoint", "-700%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				default:
+					break;
+			}
+    }
+	}
+}
+
+
+/**
+ * Function to center the selected card.
+ * Triggered when Predict button is clicked.
+ * ASSUMPTION: Only one Card is Selected. 
+ */
+function centerSelectedCard() {
+  for (let i=0; i &lt; tarotCards.length; i++) {
+    if (tarotCards[i].classList == undefined) {
+      break;
+    }
+
+    if(tarotCards[i].classList.contains("select")) {
+      switch (String(tarotCards[i].id)) {
+        /**Each Case sets css variable --changePoint and triggers deWoosh
+         * keyFrame animation in card-styles.css
+         */
+				case "card1":
+					tarotCards[i].style.setProperty("--changePoint", "275%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card2":
+					tarotCards[i].style.setProperty("--changePoint", "165%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card3":
+					tarotCards[i].style.setProperty("--changePoint", "55%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card4":
+					tarotCards[i].style.setProperty("--changePoint", "-50%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card5":
+					tarotCards[i].style.setProperty("--changePoint", "-160%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				case "card6":
+					tarotCards[i].style.setProperty("--changePoint", "-270%");
+					tarotCards[i].style.animation = "deWoosh 2s";
+					tarotCards[i].style.animationFillMode = "forwards";
+					break;
+				default:
+					break;
+      }
+    }
+  }
+}</code></pre>
         </article>
     </section>
 
@@ -282,13 +444,13 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#clearButton">clearButton</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#tempClearFortunes">tempClearFortunes</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#centerSelectedCard">centerSelectedCard</a></li><li><a href="global.html#clearButton">clearButton</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#dewooshCards">dewooshCards</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#tempClearFortunes">tempClearFortunes</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li><li><a href="global.html#wooshCards">wooshCards</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Jun 06 2023 02:05:38 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Jun 07 2023 19:18:17 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
