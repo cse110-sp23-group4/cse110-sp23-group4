@@ -39,7 +39,7 @@ function toMenuPage() {
  */
 function enterHut() {
     /* Go to menu page after 0.75 seconds upon clicking the button */
-    setTimeout(toMenuPage, 750);
+    setTimeout(toMenuPage, 600);
     
     /* Clear all elements from page */
     pageContents.innerHTML = '';
