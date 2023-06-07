@@ -23,7 +23,7 @@ function init() {
    * testing, but could be useful in the final product as well.
    * @type {HTMLElement | null}
    */
-  const tempClearButton = document.querySelector(".tempClearButton");
+  const clearButton = document.querySelector(".clearButton");
 
 	/**
 	 * Adds an event listener for backButton to call the function that
@@ -36,8 +36,8 @@ function init() {
  	 * Adds a event listener for tempClearButton to call the function
 	 * that clears fortunes from localeStorage and updates display.
  	 */
-  if (tempClearButton != null)
-    	tempClearButton.addEventListener("click", tempClearFortunes);
+  if (clearButton != null)
+    	clearButton.addEventListener("click", clearFortunes);
 
 	/**
 	 * Display fortunes when page loads
@@ -60,7 +60,7 @@ function backToMenu() {
  * temporary fuction used help test, but it could be useful for
  * the actual page.
  */
-function tempClearFortunes() {
+function clearFortunes() {
 	localStorage.removeItem("fortunes");
 	displayFortunes();
 }
