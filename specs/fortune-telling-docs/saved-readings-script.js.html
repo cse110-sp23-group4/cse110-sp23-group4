@@ -51,7 +51,7 @@ function init() {
    * testing, but could be useful in the final product as well.
    * @type {HTMLElement | null}
    */
-  const tempClearButton = document.querySelector(".tempClearButton");
+  const clearButton = document.querySelector(".clearButton");
 
 	/**
 	 * Adds an event listener for backButton to call the function that
@@ -64,8 +64,8 @@ function init() {
  	 * Adds a event listener for tempClearButton to call the function
 	 * that clears fortunes from localeStorage and updates display.
  	 */
-  if (tempClearButton != null)
-    	tempClearButton.addEventListener("click", tempClearFortunes);
+  if (clearButton != null)
+    	clearButton.addEventListener("click", clearFortunes);
 
 	/**
 	 * Display fortunes when page loads
@@ -88,7 +88,7 @@ function backToMenu() {
  * temporary fuction used help test, but it could be useful for
  * the actual page.
  */
-function tempClearFortunes() {
+function clearFortunes() {
 	localStorage.removeItem("fortunes");
 	displayFortunes();
 }
@@ -214,8 +214,8 @@ function displayFortunes() {
 }
 /**
  * Function that enables the individual deletion of fortunes from the saved-reading pages.
- * We pass the index of the fortune that is has in the localstorage array
- * and splice the array ti remove that one index. Check if it the index is greater
+ * We pass the index of the fortune that it has in the localstorage array
+ * and splice the array to remove that one index. Check if it the index is greater
  * than -1.
  * @param {int} fortuneIndex - the index of the fortune in the localstorage array
  */
@@ -241,9 +241,17 @@ function checkDuplicate(fortune) {
 	// For each fortune in the localStorage, check if the contents are equal 
 	// to the passed in fortune
 	for (let i = 0; i &lt; savedFortunes.length; i++) {
+		// Convert saved date to modified date string for equal comparisons
+		let modifiedDate = savedFortunes[i][2].toLocaleDateString(undefined, {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
+
 		if (fortune[0] == savedFortunes[i][0]) {
 			if (fortune[1] == savedFortunes[i][1]) {
-				if (fortune[2] == savedFortunes[i][2]) {
+				if (fortune[2] == modifiedDate) {
 					return i;
 				}
 			}
@@ -262,13 +270,13 @@ function checkDuplicate(fortune) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#tempClearFortunes">tempClearFortunes</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#clearFortunes">clearFortunes</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Jun 06 2023 23:56:14 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Jun 07 2023 20:47:56 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
