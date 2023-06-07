@@ -1,3 +1,9 @@
+/**
+ * @file CSS Code for card-prototype.html - Last Modified: 06/05/2023
+ * @author Ezgi Bayraktaroglu
+ * @author Helen Lin
+ */
+
 /* Make entire page's background black with image */
 html {
   background: url(assets/card-page/backdrop.png) no-repeat center center fixed; 
@@ -8,31 +14,31 @@ html {
   background-color: black;
 }
 
-#returnMenu {
-  position: absolute;
-  top: 60px;
-  left: 40px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
 }
 
 .card-container {
   position: relative;
   display: flex;
   justify-content: center;
-  top: 300px;
+  padding: 20px 0;
   gap: 10px;
 }
 
 .card-container > img:hover {
-  box-shadow: 0 0 10px 5px #00ff00 
+  box-shadow: 0 0 10px 5px #ad08c7; 
 }
 
 .buttons {
-  position: relative;
-  top: 400px;
-  display: grid;
-  grid-auto-columns: 200px 200px;
   justify-content: center;
   gap: 40px;
+  padding: 10px 0;
+  display: flex;
 }
 
 button {
@@ -54,36 +60,53 @@ button:hover {
 }
 
 #output {
-  position: relative;
-  background: #aaaaaa;
+  display: flex;
   padding: 0px 20px;
   border: black;
   border-radius: 25px;
-  font-family: 'tangerine';
-  font-size: 40px;
-  line-height: 1.5;
-  text-shadow: 2px 2px 3px #ad08c7;
-  grid-column: 1 / span 2;
-}
-
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.headerElement {
+  font-size: 25px;
   text-align: center;
+  text-shadow: 1px 1px 2px #ad08c7;
+  color: white;
+  width: 80%;
+  margin: 20px auto;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+  background: #ad08c781;
 }
 
-/* Styles the Saved Readings button in header */
-#savedReadingsPage {
-  justify-self: end;
+
+/* Keyframes animation to animate the cards from a 
+   deck into position. --changePoint set when keyframes
+   is triggered when page loads. 
+  */
+@keyframes woosh {
+	from {
+    /* Starting Position */
+		transform: translate(var(--changePoint), 0%);
+	}
+
+	to {
+    /* Ending Position: 0% being not offseted from original position */
+		transform: translate(0%, 0%);
+	}
 }
 
-/* Styles the back button in header */
-#returnMenu {
-  justify-self: start;
+
+/* Keyframes animation to away from their default position
+   default position being one next to each other 
+   --changePoint is set when deWoosh animation is called
+   inside card-script.js when predict button is pressed
+  */
+@keyframes deWoosh {
+	from {
+    /* Starting Position */
+		transform: translate(0%, 0%);
+	}
+
+	to {
+    /* Ending Position  */
+		transform: translate(var(--changePoint), 0%);
+	}
 }
