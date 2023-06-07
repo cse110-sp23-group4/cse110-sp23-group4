@@ -65,7 +65,7 @@ h1, .fortuneText, .fortuneCategory, .fortuneDate {
   gap: 40px;
 }
 
-.ClearButton {
+.clearButton {
   background: url(assets/saved-readings-page/wood-placard.png);
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;

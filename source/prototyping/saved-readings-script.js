@@ -23,7 +23,7 @@ function init() {
    * testing, but could be useful in the final product as well.
    * @type {HTMLElement | null}
    */
-  const tempClearButton = document.querySelector(".tempClearButton");
+  const clearButton = document.querySelector(".clearButton");
 
 	/**
 	 * Adds an event listener for backButton to call the function that
@@ -36,8 +36,8 @@ function init() {
  	 * Adds a event listener for tempClearButton to call the function
 	 * that clears fortunes from localeStorage and updates display.
  	 */
-  if (tempClearButton != null)
-    	tempClearButton.addEventListener("click", tempClearFortunes);
+  if (clearButton != null)
+    	clearButton.addEventListener("click", clearFortunes);
 
 	/**
 	 * Display fortunes when page loads
@@ -60,7 +60,7 @@ function backToMenu() {
  * temporary fuction used help test, but it could be useful for
  * the actual page.
  */
-function tempClearFortunes() {
+function clearFortunes() {
 	localStorage.removeItem("fortunes");
 	displayFortunes();
 }
@@ -186,8 +186,8 @@ function displayFortunes() {
 }
 /**
  * Function that enables the individual deletion of fortunes from the saved-reading pages.
- * We pass the index of the fortune that is has in the localstorage array
- * and splice the array ti remove that one index. Check if it the index is greater
+ * We pass the index of the fortune that it has in the localstorage array
+ * and splice the array to remove that one index. Check if it the index is greater
  * than -1.
  * @param {int} fortuneIndex - the index of the fortune in the localstorage array
  */
@@ -213,9 +213,17 @@ function checkDuplicate(fortune) {
 	// For each fortune in the localStorage, check if the contents are equal 
 	// to the passed in fortune
 	for (let i = 0; i < savedFortunes.length; i++) {
+		// Convert saved date to modified date string for equal comparisons
+		let modifiedDate = new Date(savedFortunes[i][2]).toLocaleDateString(undefined, {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
+
 		if (fortune[0] == savedFortunes[i][0]) {
 			if (fortune[1] == savedFortunes[i][1]) {
-				if (fortune[2] == savedFortunes[i][2]) {
+				if (fortune[2] == modifiedDate) {
 					return i;
 				}
 			}
