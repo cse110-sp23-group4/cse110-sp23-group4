@@ -8,12 +8,12 @@ describe('Basic user flow for Landing Page', () => {
     beforeAll(async () => {
         //Note this is a personal Live Server link. So, it will not work in general. 
         console.log("Starting landing pages tests...");
-        //await page.goto('http://127.0.0.1:8000/source/prototyping/landing-prototype.html');
+        //await page.goto('http://127.0.0.1:8000/source/prototyping/landing.html');
     });
 
     beforeEach(async () => {
         //Note this is a personal Live Server link. So, it will not work in general. 
-        await page.goto('http://127.0.0.1:8000/source/prototyping/landing-prototype.html');
+        await page.goto('http://127.0.0.1:8000/source/prototyping/landing.html');
     });
 
     test("Check if button changes colour on hover", async () => {
@@ -62,7 +62,7 @@ describe('Basic user flow for Landing Page', () => {
         //console.log(page2Title);
 
         expect(page2Title).toBe('This is the menu page prototype'); 
-        expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/menu-prototype.html'); 
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/menu.html'); 
     });
     
     test("Check if image displays correctly ", async () => {

@@ -7,7 +7,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
   // First, visit the landing page
   beforeAll(async () => {
       //Note this is a personal Live Server link. So, it will not work in general. 
-      await page.goto('http://localhost:8000/source/prototyping/card-prototype.html');
+      await page.goto('http://localhost:8000/source/prototyping/card.html');
   });
 
   test("Check that 6 cards were generated", async () => {
@@ -40,6 +40,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
   test('Check that menu page button returns to menu', async () => {
     await page.click('#returnMenu');
     const url = await page.url();
-    expect(url).toBe('http://localhost:8000/source/prototyping/menu-prototype.html');
+    expect(url).toBe('http://localhost:8000/source/prototyping/menu.html');
   });
 }); 

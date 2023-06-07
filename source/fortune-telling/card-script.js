@@ -1,5 +1,5 @@
 /**
- * @file JavaScript Code for card-prototype.html - Last Modified: 06/04/2023
+ * @file JavaScript Code for card.html - Last Modified: 06/04/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
  */
@@ -45,7 +45,7 @@ const saveReadingsButton = document.getElementById('savedReadingsPage');
 let selectBuffer = [];
 
 /**
- * A reference to back button HTMlElement on card-prototype.html
+ * A reference to back button HTMlElement on card.html
  * @type {HTMLElement | null}
  */
 const returnToMenuButton = document.getElementById('returnMenu');
@@ -105,14 +105,14 @@ function init() {
  * Function that changes to page back to the main menu
  */
 function returnToMenu() {
-  window.location.href = "menu-prototype.html";
+  window.location.href = "menu.html";
 }
 
 /**
  * Function that changes the page to the save readings page
  */
 function goToSavedReadings() {
-  window.location.href = "saved-readings-prototype.html";
+  window.location.href = "saved-readings.html";
 }
 
 /**

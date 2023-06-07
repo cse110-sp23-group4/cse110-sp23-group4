@@ -30,7 +30,7 @@ enterButton = document.querySelector('button');
  * for the animation to trigger.
  */
 function toMenuPage() {
-  window.location.href='menu-prototype.html';
+  window.location.href='menu.html';
 }
 
 /**
