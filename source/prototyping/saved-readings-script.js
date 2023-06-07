@@ -214,7 +214,7 @@ function checkDuplicate(fortune) {
 	// to the passed in fortune
 	for (let i = 0; i < savedFortunes.length; i++) {
 		// Convert saved date to modified date string for equal comparisons
-		let modifiedDate = savedFortunes[i][2].toLocaleDateString(undefined, {
+		let modifiedDate = new Date(savedFortunes[i][2]).toLocaleDateString(undefined, {
 			weekday: "long",
 			year: "numeric",
 			month: "long",
