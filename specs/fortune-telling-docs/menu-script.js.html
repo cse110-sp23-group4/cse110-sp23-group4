@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: menu-script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: menu-script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A reference to the div containing all the category Buttons on menu-prototype.html
+ * @type {HTMLCollection&lt;Element>}
+ */
+const categories = document.getElementById('categories');
+
+/**
+ * Array of category Buttons to create 
+ * @type {HTMLCollection&lt;String>}
+ */
+const titles = [
+  "School",
+  "Love",
+  "Life",
+];
+
+/**
+ * A reference to back button HTMlElement on menu-prototype.html
+ * @type {HTMLElement | null}
+ */
+const backButton = document.getElementById('back');
+
+/**
+ * A reference to Saved Readings button HTMlElement on menu-prototype.html
+ * @type {HTMLElement | null}
+ */
+const savedReadingsButton = document.getElementById('savedReadings');
+
+/**
+ * A function used for an event listener which is responsible for performing the 
+ * necessary actions when a card is clicked on by the user such as saving card 
+ * category type and redirecting them
+ */
+function setCardLink(i) {
+  /* Set data in local storage based on clicked category */
+  localStorage.setItem('category', JSON.stringify(titles[i]));
+  window.location.href = 'card-prototype.html';
+}
+
+/**
+ * A function used for an event listener which is responsible for performing the
+ * necessary actions when the landing page is clicked on by the user
+ */
+function setLandingLink() {
+  window.location.href = 'landing-prototype.html';
+}
+
+/**
+ * A function used for an event listener which is responsible for performing the
+ * necessary actions when the saved readings page is clicked
+ */
+function setSavedReadingsLink() {
+  window.location.href = 'saved-readings-prototype.html';
+}
+
+/**
+ * A function used for an event listener which is responsible for creating the
+ * category Buttons with each category when the page is loaded
+ */
+function createCategoryButtons() {
+  for (let i = 0; i &lt; titles.length; i++) {
+    let newCategory = document.createElement("button");
+    newCategory.setAttribute("class", "categoryButton");
+    newCategory.textContent = titles[i];
+
+    newCategory.addEventListener('click', function () { 
+      setCardLink(i);
+    });
+    categories.appendChild(newCategory);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', createCategoryButtons);
+
+/*
+ * Adds an onClick listner to the reference to the back button html element on 
+ * menu-prototype.html so that when clicked the user gets navigated to the 
+ * Landing Page (landing-prototype.html)
+ */
+backButton.addEventListener('click', setLandingLink);
+
+/*
+ * Adds an onClick listner to the reference to the Saved Readings button html 
+ * element on menu-prototype.html so that when clicked the user gets navigated 
+ * to the Saved Readings Page (saved-readings-prototype.html)
+ */
+savedReadingsButton.addEventListener('click', setSavedReadingsLink);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#clearButton">clearButton</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#tempClearFortunes">tempClearFortunes</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Jun 06 2023 02:05:38 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

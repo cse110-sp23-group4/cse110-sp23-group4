@@ -5,3 +5,5 @@
 
 ## [Fortune Telling Prototype](https://cse110-sp23-group4.github.io/cse110-sp23-group4/source/prototyping/landing-prototype.html)
 
+## [JSDocs](https://cse110-sp23-group4.github.io/cse110-sp23-group4/specs/fortune-telling-docs/index.html)
+

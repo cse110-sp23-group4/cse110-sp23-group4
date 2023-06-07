@@ -1,5 +1,4 @@
 .DS_store
 .vscode
-.node_modules/
 *.swp
-
+node_modules/

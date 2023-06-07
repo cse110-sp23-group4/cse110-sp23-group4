@@ -24,7 +24,7 @@ jobs:
             - name: Lint all JS files
               run: |
                 find . -name '*.js' -type f \
-                | grep -v "^./source/8-ball/" \
+                | grep -v -E "^./(source/8-ball|specs)/" \
                 | xargs -I {} jshint --config .jshintrc {}
     run-html-css-linter:
       runs-on: ubuntu-latest

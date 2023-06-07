@@ -1,0 +1,11 @@
+{
+    "source": {
+        "include": ["./source/prototyping"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|fortune-telling-docs)"
+    },
+    "opts": {
+        "recurse": true,
+        "destination": "./specs/fortune-telling-docs"
+    }
+}
