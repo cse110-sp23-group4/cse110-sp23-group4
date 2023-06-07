@@ -80,6 +80,9 @@ function init() {
       break;
   }
 
+  let predictOut = document.getElementById("output");
+  predictOut.innerText = `Please Select ${selectCount} Card.`
+
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
 
@@ -197,7 +200,7 @@ async function generatePrediction() {
     centerSelectedCard();
 		
     /* Give the user a prediction */
-    predictOut.innerHTML = `<p>${outputContent}</p>`;
+    predictOut.innerHTML = `<p>${outputContent}</p>`;    
   } else {
     /* Display a message that the user selected nothing */
     predictOut.innerHTML = `<p>You did not select enough cards!<p>`;
@@ -263,6 +266,7 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
  * Function to woosh or animate to the cards from a deck on the left
  * to being layed out for the user to pick
  * Triggered when the page is loaded.
+ * Assumption: Number of Cards that could be selected from are 6
  */
 function wooshCards() {
 	for(let i = 0; i < tarotCards.length; i++) {
@@ -300,6 +304,7 @@ function wooshCards() {
 /**
  * Function to dewoosh or animate to the left into a deck the unselected cards
  * Triggered when Predict button is clicked.
+ * Assumption: Number of Cards that could be selected from are 6
  */
 function dewooshCards() {
 	for(let i = 0; i < tarotCards.length; i++) {
