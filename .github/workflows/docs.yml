@@ -3,7 +3,7 @@ name: Generate JSDocs
 on:
     push:
       branches:
-        - '*'
+        - 'main'
 
 jobs:
     generate_docs:

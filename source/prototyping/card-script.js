@@ -64,7 +64,8 @@ window.addEventListener('load', init);
  */
 function init() {
   for (let i = 0; i < tarotCards.length; i++) {
-    tarotCards[i].addEventListener("click", function () { chooseCard(i); });
+    tarotCards[i].index = i;
+    tarotCards[i].addEventListener("click", chooseCard);
   }
 
   /* Get category from local storage */
@@ -81,13 +82,14 @@ function init() {
   }
 
   let predictOut = document.getElementById("output");
-  predictOut.innerText = `Please Select ${selectCount} Card.`
+  predictOut.innerText = `Please Select ${selectCount} Card.`;
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
 
   /* Add event listener for save fortune button */
-  saveButton.addEventListener("click", saveFortune);
+  if (saveButton != null)
+    saveButton.addEventListener("click", saveFortune);
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
@@ -95,8 +97,9 @@ function init() {
   /* Animate the cards into position */
   wooshCards();
 
-  /* Add event listener save readings button to save a reading */
-  saveReadingsButton.addEventListener("click", goToSavedReadings);
+  /* Add event listener to save readings button to go to saved readings page*/
+  if (saveReadingsButton != null)
+    saveReadingsButton.addEventListener("click", goToSavedReadings);
 }
 
 /**
@@ -118,12 +121,6 @@ function goToSavedReadings() {
  * when the user has selected their cards
  */
 async function generatePrediction() {
-  /**
-   * Array containing the strings of the responses from the tarot cards
-   * @type {string[]}
-   */
-  const numbers = ["1","2","3","4","5","6","7","8","9","10"];
-
   /**
    * A reference to the output area for the result of the reading
    * @type {HTMLElement | null}
@@ -171,6 +168,8 @@ async function generatePrediction() {
 
     // Get the current category of the fortune telling site
     let category = JSON.parse(localStorage.getItem("category"));
+    if (category == undefined)
+      category = 'Life';
 
     /**
      * String used for storing the output of the prediction
@@ -181,13 +180,13 @@ async function generatePrediction() {
     // Get the JSON containing all the fortune responses
     let response = await fetch("./assets/fortunes/fortunes.json");
     let fortuneResponses = await response.json();
-      
 
     for (let i = 0; i < selectBuffer.length; i++) {
-      // Change the images of the cards that were selected
-      tarotCards[selectBuffer[i]].src = `assets/card-page/${cards[i]}.png`;
-      // Pick random fortune response within card subsection to use
-      let cardResponse = Math.floor(Math.random() * 2);
+        // Change the images of the cards that were selected
+        tarotCards[selectBuffer[i]].src = `assets/card-page/${cards[i]}.png`;
+
+        // Pick random fortune response within card subsection to use
+        let cardResponse = Math.floor(Math.random() * 2);
 
       outputContent += fortuneResponses[category][cards[i]][cardResponse];
 
@@ -201,18 +200,25 @@ async function generatePrediction() {
     centerSelectedCard();
 		
     /* Give the user a prediction */
-    predictOut.innerHTML = `<p>${outputContent}</p>`;    
+    predictOut.innerHTML = `${outputContent}`;
+
+    // Remove listeners
+    predictButton.removeEventListener("click", generatePrediction);
+    for (let i = 0; i < tarotCards.length; i++) {
+      tarotCards[i].removeEventListener("click", chooseCard);
+    }
+
   } else {
     /* Display a message that the user selected nothing */
-    predictOut.innerHTML = `<p>You did not select enough cards!<p>`;
+    predictOut.innerHTML = `Please Select ${selectCount} Card.`;
   }
 }
 
-function chooseCard (i) {
-  const index = selectBuffer.indexOf(i);
+function chooseCard() {
+  const index = selectBuffer.indexOf(this.index);
   if (index == -1) {
-    selectBuffer.push(i);
-    tarotCards[i].style.boxShadow = "0 0 10px 5px #ad08c7";
+    selectBuffer.push(this.index);
+    tarotCards[this.index].style.boxShadow = "0 0 10px 5px #ad08c7";
 
     if (selectBuffer.length > selectCount) {
       tarotCards[selectBuffer[0]].style.boxShadow = null;
@@ -220,7 +226,7 @@ function chooseCard (i) {
     }
 
   } else {
-    tarotCards[i].style.boxShadow = null;
+    tarotCards[this.index].style.boxShadow = null;
 
     selectBuffer.splice(index, 1);
   } 

@@ -2,40 +2,42 @@
  * @file The saved-readings-script.js is a script that contains almost all of the
  * functionality needed to store, retrieve, and delete a fortune from localStorage.
  * It also contains functions to display fortunes on the page itself.
- * - Last Modified: 06/05/2023
+ * - Last Modified: 06/06/2023
  * @author Nakul Nandhakumar
  * @author Ezgi Bayraktaroglu
+ * @author Joshua Tan
+ * @author Abijit Jayachandran
  */
 window.addEventListener('DOMContentLoaded', init);
 
-const history = document.querySelector(".historyWrapper");
-
-/**
- * A reference to the button to go back to the menu
- * @type {HTMLElement | null}
- */
-const backButton = document.querySelector(".backButton");
-
-/**
- * A reference to the button to clear the fortunes from
- * local storage and from the display. Is temporary, for
- * testing, but could be useful in the final product as well.
- * @type {HTMLElement | null}
- */
-const clearButton = document.querySelector(".ClearButton");
-
 function init() {
+  /**
+   * A reference to the button to go back to the menu
+   * @type {HTMLElement | null}
+   */
+  const backButton = document.querySelector(".backButton");
+
+  /**
+   * A reference to the button to clear the fortunes from
+   * local storage and from the display. Is temporary, for
+   * testing, but could be useful in the final product as well.
+   * @type {HTMLElement | null}
+   */
+  const tempClearButton = document.querySelector(".tempClearButton");
+
 	/**
 	 * Adds an event listener for backButton to call the function that
 	 * sends user back to menu page.
 	 */
-	backButton.addEventListener("click", backToMenu);
+  if (backButton != null)
+  	  backButton.addEventListener("click", backToMenu);
 
 	/**
  	 * Adds a event listener for tempClearButton to call the function
 	 * that clears fortunes from localeStorage and updates display.
  	 */
-	clearButton.addEventListener("click", tempClearFortunes);
+  if (tempClearButton != null)
+    	tempClearButton.addEventListener("click", tempClearFortunes);
 
 	/**
 	 * Display fortunes when page loads
@@ -54,7 +56,7 @@ function backToMenu() {
  * This function clears the localStorage of (only) fortunes and
  * calls the displayFortunes function to update the display to
  * be cleared of fortunes. This function is called by the 
- * event listener added to tempClearButton. This is meant to be a 
+   * event listener added to tempClearButton. This is meant to be a 
  * temporary fuction used help test, but it could be useful for
  * the actual page.
  */
@@ -87,7 +89,7 @@ window.addEventListener('storage', displayFortunes);
  */
 export function addFortune(fortuneText, category, date) {
 	// Get existing fortunes from localStorage
-	let fortunes = getFortunes();
+	let savedFortunes = getFortunes();
 
 	// Convert date into weekday day month year
 	let modifiedDate = date.toLocaleDateString(undefined, {
@@ -97,13 +99,10 @@ export function addFortune(fortuneText, category, date) {
 		day: "numeric",
 	});
 
-	console.log([fortuneText,category,modifiedDate]);
-	console.log(fortunes[0]);
-
 	// Check if fortune already exists, before choosing to save fortune or not
-	if (fortunes.indexOf([fortuneText,category,modifiedDate]) == -1) {
-		fortunes.push([fortuneText,category,modifiedDate]);
-		localStorage.setItem('fortunes', JSON.stringify(fortunes));
+	if (checkDuplicate([fortuneText,category,modifiedDate]) == -1) {
+		savedFortunes.push([fortuneText,category,date]);
+		localStorage.setItem('fortunes', JSON.stringify(savedFortunes));
 	}
 }
 
@@ -138,10 +137,14 @@ function getFortunes() {
  * for the UI, the date would be in Spanish.
  */
 function displayFortunes() {
+  const history = document.querySelector(".historyWrapper");
+  if (history === null)
+    return;
 	// retrieves fortunes from local storage in an array
 	let arr = getFortunes();
 	// clears the display of fortunes
-	history.innerHTML = '';
+  if (history !== null)
+    	history.innerHTML = '';
 	// loops through each fortune and displays it
 	for(let i = 0; i<arr.length; i++) {
 		// creates div element as wrapper
@@ -157,7 +160,12 @@ function displayFortunes() {
 		fortuneCategory.classList.add("fortuneCategory");
 		// creates an h3 element that holds fortune date (specific to locale)
 		let fortuneDate = document.createElement("h3");
-		fortuneDate.innerHTML = arr[i][2];
+		fortuneDate.innerHTML = new Date(arr[i][2]).toLocaleDateString(undefined, {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
 		fortuneDate.classList.add("fortuneDate");
 		// Add Delete Button
 		let deleteButton = document.createElement('button');
@@ -189,4 +197,30 @@ function deleteFortune(fortuneIndex) {
         savedFortunes.splice(fortuneIndex, 1);
         localStorage.setItem('fortunes', JSON.stringify(savedFortunes));
     }
+}
+
+/**
+ * Takes in a fortune array containing the fortuneText, category, and date and
+ * checks if there is another fortune in local storage that matches this fortune.
+ * Returns the index of the fortune in the localStorage array otherwise returns
+ * -1 if does not exist.
+ * @param {Array<Object>} fortune 
+ */
+function checkDuplicate(fortune) {
+	// Get saved fortunes from localStorage
+	let savedFortunes = getFortunes();
+
+	// For each fortune in the localStorage, check if the contents are equal 
+	// to the passed in fortune
+	for (let i = 0; i < savedFortunes.length; i++) {
+		if (fortune[0] == savedFortunes[i][0]) {
+			if (fortune[1] == savedFortunes[i][1]) {
+				if (fortune[2] == savedFortunes[i][2]) {
+					return i;
+				}
+			}
+		}
+	}
+
+	return -1;
 }
