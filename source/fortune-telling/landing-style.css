@@ -20,7 +20,7 @@ html {
     -webkit-background-size: 80%;
     -moz-background-size: 80%;
     -o-background-size: 80%;
-    background-size: 80%;
+    background-size: cover;
     background-color: rgb(2, 31, 2); /*change background color to match hut picture */
 
     /* position transitions take 1 second and size transitions take 2 seconds and are linear */
