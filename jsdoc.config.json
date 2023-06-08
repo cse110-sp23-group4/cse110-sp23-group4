@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["./source/fortune-telling"],
+        "include": ["./source/prototyping"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|fortune-telling-docs)"
     },

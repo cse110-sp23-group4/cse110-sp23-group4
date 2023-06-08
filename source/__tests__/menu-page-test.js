@@ -11,7 +11,7 @@ describe('Basic user flow for Menu Page', () => {
     });
 
     beforeEach(async () => {
-        await page.goto('http://127.0.0.1:8000/source/fortune-telling/menu.html');
+        await page.goto('http://127.0.0.1:8000/source/prototyping/menu.html');
     });
 
     test("Check if there are 5 buttons on the screen on load", async () =>{
@@ -48,7 +48,7 @@ describe('Basic user flow for Menu Page', () => {
         const page2Title = await page.title();
 
         expect(page2Title).toBe('This is the prototype history page');
-        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/saved-readings.html');
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/saved-readings.html');
     });
 
     test("Check if back button takes you back to landing page on click", async () => {
@@ -61,7 +61,7 @@ describe('Basic user flow for Menu Page', () => {
         const page2Title = await page.title();
 
         expect(page2Title).toBe('The Fortune Hut');
-        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/landing.html');
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/landing.html');
     });
 
     test("Check if all buttons show hover animation", async () => {
@@ -100,9 +100,9 @@ describe('Basic user flow for Menu Page', () => {
             const page2Title = await page.title();
 
             expect(page2Title).toBe('Tarot Beta');
-            expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/card.html');
+            expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/card.html');
 
-            page.goto('http://127.0.0.1:8000/source/fortune-telling/menu.html'); 
+            page.goto('http://127.0.0.1:8000/source/prototyping/menu.html'); 
             await page.waitForNavigation();
         }
     });
