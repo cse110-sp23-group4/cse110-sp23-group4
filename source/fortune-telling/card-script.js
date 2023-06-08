@@ -225,7 +225,7 @@ function typePrediction(prediction) {
   const predictOut = document.getElementById("output");
   predictOut.textContent = "";
 
-  //Interval function used to type out on char at a time
+  //Interval function used to type out one char at a time
   const typeOutputInterval = setInterval(()=> {
     predictOut.textContent +=predictionChars[predictionCharsIndex];
     predictionCharsIndex++;
@@ -235,6 +235,9 @@ function typePrediction(prediction) {
       clearInterval(typeOutputInterval);
     }
   }, 50);
+  setTimeout(() => {
+    console.log((document.querySelector('#output')).innerText);
+  }, 2000);
 }
 
 
