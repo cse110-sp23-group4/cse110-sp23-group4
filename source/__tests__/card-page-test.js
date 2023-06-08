@@ -12,18 +12,32 @@ describe('Basic user flow for Fortune Generation Page', () => {
       await page.goto('http://localhost:8000/source/fortune-telling/card.html');
   });
 
-  // Joshua Tests
+
+  test("Verify user is asked to select a card on load", async() => {
+    //waits for the prompt to be generated
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+    const initialText = await page.$eval('#output', (text) => {
+      return text.innerHTML;
+    });
+
+    expect(initialText).toBe('Please Select 1 Card.')
+  })
+
   test("Verify user cannot predict without selecting cards", async () => {
     // Click without selecting cards
     await page.click('#getTarot');
-    await page.waitFor
-    const outputText = await page.$eval('#output', (text) => {
-      return text.innerText;
-    });
-    expect(outputText).toBe('<p>You did not select enough cards!</p><p></p>');
-  });
 
-  // Joshua Tests
+    //waits for the output to be generated
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+    const outputText = await page.$eval('#output', (text) => {
+      return text.innerHTML;
+    });
+
+    expect(outputText).toBe('Please Select 1 Card.');    
+  }, 5000);
+
   test("Verify user cannot predict a second time", async() => {
     // Select a Card
     await page.$eval('#card1', (card) => {
@@ -31,18 +45,31 @@ describe('Basic user flow for Fortune Generation Page', () => {
     });
 
     await page.click('#getTarot');
-    const outputText = await page.$eval('#output', (text) => {
+
+    let outputText;
+    //wait for the fortune to be generated
+    //the longest fortune in the bank is 449 chars = 22.45 secs generation time
+    //since each character takes around 50ms to generate.
+    await new Promise((resolve, reject) => setTimeout(resolve, 25000));
+    
+    outputText = await page.$eval('#output', (text) => {
       return text.innerText;
     });
 
-    for (let i = 0; i < 1; i++) {
-      await page.click('#getTarot');
-      const newText = await page.$eval('#output', (text) => {
-        return text.innerText;
-      });
-      expect(outputText).toBe(newText);
-    }
-  });
+    //console.log("output text: " + outputText);
+
+    await page.click('#getTarot');
+
+    let newText; 
+    //give opportunity for newText to change (Note: it should NOT change)
+    await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+    newText = await page.$eval('#output', (text) => {
+      return text.innerText;
+    });
+    //console.log("new text: " + newText);
+
+    expect(outputText).toBe(newText);
+  }, 30000);
 
   test("Check that 6 cards were generated", async () => {
     const cards = await page.$$('.card');
