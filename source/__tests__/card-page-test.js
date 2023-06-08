@@ -56,8 +56,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
       return text.innerText;
     });
 
-    //console.log("output text: " + outputText);
-
     await page.click('#getTarot');
 
     let newText; 
@@ -66,7 +64,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
     newText = await page.$eval('#output', (text) => {
       return text.innerText;
     });
-    //console.log("new text: " + newText);
 
     expect(outputText).toBe(newText);
   }, 30000);
