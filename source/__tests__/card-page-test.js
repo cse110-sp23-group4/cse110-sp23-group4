@@ -1,13 +1,14 @@
 /**
- * @file Contains puppeteer tests for the cards page of the web app
+ * @file Contains puppeteer tests for the cards page of the web app - Last Modified: 06/07/2023
  * @author Christian Lee
  * @author Joshua Tan
+ * @author Abijit Jayachandran
  */
 
 describe('Basic user flow for Fortune Generation Page', () => {
   // First, visit the landing page
-  beforeAll(async () => {
-      //Note this is a personal Live Server link. So, it will not work in general. 
+  beforeAll(async () => { 
+      console.log("Starting card page tests...");
       await page.goto('http://localhost:8000/source/fortune-telling/card.html');
   });
 
@@ -15,6 +16,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
   test("Verify user cannot predict without selecting cards", async () => {
     // Click without selecting cards
     await page.click('#getTarot');
+    await page.waitFor
     const outputText = await page.$eval('#output', (text) => {
       return text.innerText;
     });
