@@ -112,7 +112,7 @@ function returnToMenu() {
  * Function that changes the page to the save readings page
  */
 function goToSavedReadings() {
-  window.location.href = "saved-readings.html";
+  window.location.href = "saved.html";
 }
 
 /**
