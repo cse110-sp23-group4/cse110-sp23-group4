@@ -1,13 +1,45 @@
 /**
  * @file Contains puppeteer tests for the cards page of the web app
  * @author Christian Lee
+ * @author Joshua Tan
  */
 
 describe('Basic user flow for Fortune Generation Page', () => {
   // First, visit the landing page
   beforeAll(async () => {
-      //Note this is a personal Live Server link. So, it will not work in general.
+      //Note this is a personal Live Server link. So, it will not work in general. 
       await page.goto('http://localhost:8000/source/fortune-telling/card.html');
+  });
+
+  // Joshua Tests
+  test("Verify user cannot predict without selecting cards", async () => {
+    // Click without selecting cards
+    await page.click('#getTarot');
+    const outputText = await page.$eval('#output', (text) => {
+      return text.innerText;
+    });
+    expect(outputText).toBe('<p>You did not select enough cards!</p><p></p>');
+  });
+
+  // Joshua Tests
+  test("Verify user cannot predict a second time", async() => {
+    // Select a Card
+    await page.$eval('#card1', (card) => {
+      card.click();
+    });
+
+    await page.click('#getTarot');
+    const outputText = await page.$eval('#output', (text) => {
+      return text.innerText;
+    });
+
+    for (let i = 0; i < 1; i++) {
+      await page.click('#getTarot');
+      const newText = await page.$eval('#output', (text) => {
+        return text.innerText;
+      });
+      expect(outputText).toBe(newText);
+    }
   });
 
   test("Check that 6 cards were generated", async () => {
@@ -15,28 +47,32 @@ describe('Basic user flow for Fortune Generation Page', () => {
     expect(cards.length).toBe(6);
   });
 
-  test('Check that clicking card changes shadow', async () => {
-    //tried setting a timeout to wait for the animation to play out
-    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
-    await page.click('#card1');
+  test('Check that clicking card creates shadow', async () => {
     const style = await page.$eval('#card1', (card) => {
+      card.click();
       return card.style.boxShadow;
     });
     expect(style).toBe('rgb(173, 8, 199) 0px 0px 10px 5px');
-  }, 7000);
+  });
 
   test('Check that predict button creates fortune', async () => {
     await page.click('#getTarot');
     const text = await page.$eval('#output', (text) => {
-      return text.innerHTML;
+      return text.innerText;
     });
-    expect(text).toBe('');
+    expect(text).not.toBe('');
   });
 
   test('Check that save fortune button saves fortune', async () => {
+    let fortuneBefore = await page.evaluate(() => JSON.parse(localStorage.getItem('fortunes')));
     await page.click('#saveFortune');
-    let fortune = await page.evaluate(() => JSON.parse(localStorage.getItem('fortunes')));
-    expect(fortune).toBe(1);
+    let fortuneAfter = await page.evaluate(() => JSON.parse(localStorage.getItem('fortunes')));
+    if (fortuneBefore) {
+      expect(fortuneBefore.length - fortuneAfter.length).toBe(1);
+    }
+    else {
+      expect(fortuneAfter.length).toBe(1);
+    }
   });
 
   test('Check that menu page button returns to menu', async () => {
@@ -44,4 +80,4 @@ describe('Basic user flow for Fortune Generation Page', () => {
     const url = await page.url();
     expect(url).toBe('http://localhost:8000/source/fortune-telling/menu.html');
   });
-});
+}); 
