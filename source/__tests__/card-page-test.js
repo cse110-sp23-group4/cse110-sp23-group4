@@ -21,8 +21,8 @@ describe('Basic user flow for Fortune Generation Page', () => {
       return text.innerHTML;
     });
 
-    expect(initialText).toBe('Please Select 1 Card.')
-  })
+    expect(initialText).toBe('Please Select 1 Card.');
+  });
 
   test("Verify user cannot predict without selecting cards", async () => {
     // Click without selecting cards
