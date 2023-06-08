@@ -16,6 +16,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
   });
 
   test('Check that clicking card changes shadow', async () => {
+    //tried setting a timeout to wait for the animation to play out
     await new Promise((resolve, reject) => setTimeout(resolve, 3000));
     await page.click('#card1');
     const style = await page.$eval('#card1', (card) => {
