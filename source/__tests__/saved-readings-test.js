@@ -6,7 +6,7 @@
 describe('Basic user flow for Saved Readings Page', () => {
     beforeAll(async () => {
         //Note this is a personal Live Server Link. So, it will not work in general.
-        await page.goto('http://127.0.0.1:8000/source/prototyping/saved-readings.html');
+        await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved-readings.html');
     });
     test("Check if back button takes you back to the menu page on click", async() => {
         console.log("Checking if back button takes you back to the menu page on click.");
@@ -20,7 +20,7 @@ describe('Basic user flow for Saved Readings Page', () => {
         const page2Title = await page.title();
         console.log(page2Title);
 
-        expect(page2URL).toBe('http://127.0.0.1:8000/source/prototyping/menu.html');
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
         expect(page2Title).toBe('This is the menu page prototype');
     });
 });

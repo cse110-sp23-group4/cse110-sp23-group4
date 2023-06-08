@@ -1,6 +1,6 @@
 describe('Basic user flow for Landing Page', () => {
     beforeAll(async () => {
-      await page.goto('http://127.0.0.1:8000/source/prototyping/card.html');
+      await page.goto('http://127.0.0.1:8000/source/fortune-telling/card.html');
     });
 
     test("Verify user cannot predict without cards", async () => {
