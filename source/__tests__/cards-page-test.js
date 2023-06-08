@@ -6,8 +6,8 @@
 describe('Basic user flow for Fortune Generation Page', () => {
   // First, visit the landing page
   beforeAll(async () => {
-      //Note this is a personal Live Server link. So, it will not work in general. 
-      await page.goto('http://localhost:8000/source/prototyping/card-prototype.html');
+      //Note this is a personal Live Server link. So, it will not work in general.
+      await page.goto('http://localhost:8000/source/fortune-telling/card.html');
   });
 
   test("Check that 6 cards were generated", async () => {
@@ -16,12 +16,14 @@ describe('Basic user flow for Fortune Generation Page', () => {
   });
 
   test('Check that clicking card changes shadow', async () => {
+    //tried setting a timeout to wait for the animation to play out
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
     await page.click('#card1');
     const style = await page.$eval('#card1', (card) => {
       return card.style.boxShadow;
     });
-    expect(style).toBe('rgb(255, 0, 0) 0px 0px 10px 5px');
-  });
+    expect(style).toBe('rgb(173, 8, 199) 0px 0px 10px 5px');
+  }, 7000);
 
   test('Check that predict button creates fortune', async () => {
     await page.click('#getTarot');
@@ -40,6 +42,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
   test('Check that menu page button returns to menu', async () => {
     await page.click('#returnMenu');
     const url = await page.url();
-    expect(url).toBe('http://localhost:8000/source/prototyping/menu-prototype.html');
+    expect(url).toBe('http://localhost:8000/source/fortune-telling/menu.html');
   });
-}); 
+});

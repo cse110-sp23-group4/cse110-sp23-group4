@@ -1,5 +1,5 @@
 /**
- * @file JavaScript Code for card-prototype.html - Last Modified: 06/04/2023
+ * @file JavaScript Code for card.html - Last Modified: 06/04/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
  */
@@ -45,13 +45,13 @@ const saveReadingsButton = document.getElementById('savedReadingsPage');
 let selectBuffer = [];
 
 /**
- * A reference to back button HTMlElement on card-prototype.html
+ * A reference to back button HTMlElement on card.html
  * @type {HTMLElement | null}
  */
 const returnToMenuButton = document.getElementById('returnMenu');
 
 /**
- * A reference to all card images 
+ * A reference to all card images
  * @type {HTMLCollection<img> | null}
  */
 const tarotCards = document.getElementsByClassName('card');
@@ -59,7 +59,7 @@ const tarotCards = document.getElementsByClassName('card');
 window.addEventListener('load', init);
 
 /**
- * Function containing all intial setup functions for generating cards 
+ * Function containing all intial setup functions for generating cards
  * and event listeners for the buttons on the page
  */
 function init() {
@@ -105,14 +105,14 @@ function init() {
  * Function that changes to page back to the main menu
  */
 function returnToMenu() {
-  window.location.href = "menu-prototype.html";
+  window.location.href = "menu.html";
 }
 
 /**
  * Function that changes the page to the save readings page
  */
 function goToSavedReadings() {
-  window.location.href = "saved-readings-prototype.html";
+  window.location.href = "saved-readings.html";
 }
 
 /**
@@ -163,7 +163,7 @@ async function generatePrediction() {
           cards.push("unexpected");
           break;
       }
-    });    
+    });
 
     // Get the current category of the fortune telling site
     let category = JSON.parse(localStorage.getItem("category"));
@@ -197,7 +197,7 @@ async function generatePrediction() {
 
     // Center the selected card
     centerSelectedCard();
-		
+
     /* Give the user a prediction */
     typePrediction(outputContent);
 
@@ -214,7 +214,7 @@ async function generatePrediction() {
 }
 
 /**
- * Takes in the prediction generate and types out the 
+ * Takes in the prediction generate and types out the
  * prediction results by updating the html content character
  * by character
  * @param {string} - Predition result to be typed out
@@ -253,11 +253,11 @@ function chooseCard() {
     tarotCards[this.index].style.boxShadow = null;
 
     selectBuffer.splice(index, 1);
-  } 
+  }
 }
 
 /**
- * Function to save a fortune to localStorage for later display on the save 
+ * Function to save a fortune to localStorage for later display on the save
  * fortunes page. Executes when the save fortune button is pressed
  */
 function saveFortune() {
@@ -388,7 +388,7 @@ function dewooshCards() {
 /**
  * Function to center the selected card.
  * Triggered when Predict button is clicked.
- * ASSUMPTION: Only one Card is Selected. 
+ * ASSUMPTION: Only one Card is Selected.
  */
 function centerSelectedCard() {
   for (let i=0; i < tarotCards.length; i++) {

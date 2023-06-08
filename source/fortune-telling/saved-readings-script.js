@@ -49,7 +49,7 @@ function init() {
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	location.href = "menu-prototype.html";
+	location.href = "menu.html";
 }
 
 /**
