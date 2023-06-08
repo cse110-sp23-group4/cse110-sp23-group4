@@ -12,7 +12,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
       await page.goto('http://localhost:8000/source/fortune-telling/card.html');
   });
 
-
   test("Verify user is asked to select a card on load", async() => {
     //waits for the prompt to be generated
     await new Promise((resolve, reject) => setTimeout(resolve, 3000));
@@ -105,5 +104,13 @@ describe('Basic user flow for Fortune Generation Page', () => {
     await page.click('#returnMenu');
     const url = await page.url();
     expect(url).toBe('http://localhost:8000/source/fortune-telling/menu.html');
+    await page.goBack();
+  });
+
+  test('Check that saved reading button goes to saved reading page', async () => {
+    await page.click('#savedReadingsPage');
+    const url = await page.url();
+    expect(url).toBe('http://localhost:8000/source/fortune-telling/saved.html');
+    await page.goBack();
   });
 }); 
