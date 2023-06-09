@@ -9,6 +9,8 @@ This repository contains all the code written by Team 4 - Powell Rangers from UC
 ![GitHub contributors](https://img.shields.io/github/contributors/cse110-sp23-group4/cse110-sp23-group4)
 ![GitHub issues](https://img.shields.io/github/issues-raw/cse110-sp23-group4/cse110-sp23-group4)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/cse110-sp23-group4/cse110-sp23-group4)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/cse110-sp23-group4/cse110-sp23-group4)
+![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/cse110-sp23-group4/cse110-sp23-group4)
 
 *The Fortune Hut* is the final project from Professor Thomas Powell's CSE 110 class in the Spring 2023 quarter at UC San Diego. It is a tarot card reading app that allows you to receive a fortune from 3 categories: School, Love, and Life.
 
