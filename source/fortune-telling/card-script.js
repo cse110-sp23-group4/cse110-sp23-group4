@@ -91,7 +91,7 @@ const returnToMenuButton = document.getElementById('returnMenu');
  * A reference to reset button to get new fortune
  * @type {HTMLElement | null}
  */
-const newFortuneButton = document.getElementById('newFortune');
+const resetButton = document.getElementById('newFortune');
 
 
 
@@ -149,7 +149,7 @@ function init() {
   saveButton.style.opacity = 0.5;
 
   // Remove reset button functionality
-  resetButton.removeEventListener("click", resetFortune);
+  resetButton.removeEventListener("click", init);
   resetButton.style.opacity = 0.5;
 
   /* Add event listener for return to menu button to go back to menu page */
