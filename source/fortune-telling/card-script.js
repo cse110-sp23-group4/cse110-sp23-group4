@@ -63,6 +63,12 @@ const saveButton = document.getElementById('saveFortune');
 
 
 /**
+ * A reference to a button to reset fortunes
+ * @type {HTMLElement | null}
+ */
+const resetButton = document.getElementById('reset');
+
+/**
  * A reference to a button to save the fortune to localStorage
  * @type {HTMLElement | null}
  */
@@ -146,6 +152,8 @@ function init() {
   // Remove save button
   saveButton.removeEventListener("click", saveFortune);
   saveButton.style.opacity = 0.5;
+
+  resetButton.addEventListener("click", resetFortune);
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
@@ -363,6 +371,13 @@ function saveFortune() {
 }
 
 
+
+/**
+ * Resets page to allow for new prediction
+ */
+function resetFortune() {
+  location.reload();
+}
 
 /**
  * Generates an array of non-duplicate random numbers within a given range.
