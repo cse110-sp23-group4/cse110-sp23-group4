@@ -10,13 +10,13 @@ import { addFortune } from "./saved-readings-script.js";
 
 /**
  * A reference to the number of cards the user wants to select
- * @type {int}
+ * @type {number}
  */
 let selectCount;
 
 /**
  * Set the number of cards to appear to be 6
- * @type {int}
+ * @type {number}
  */
 let cardCount = 6;
 

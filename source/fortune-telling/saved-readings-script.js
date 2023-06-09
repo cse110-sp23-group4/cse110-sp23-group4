@@ -189,7 +189,7 @@ function displayFortunes() {
  * We pass the index of the fortune that it has in the localstorage array
  * and splice the array to remove that one index. Check if it the index is greater
  * than -1.
- * @param {int} fortuneIndex - the index of the fortune in the localstorage array
+ * @param {number} fortuneIndex - the index of the fortune in the localstorage array
  */
 function deleteFortune(fortuneIndex) {
 	let savedFortunes = getFortunes();
