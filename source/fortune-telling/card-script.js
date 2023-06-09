@@ -240,7 +240,9 @@ function typePrediction(prediction) {
   }, 2000);
 }
 
-
+/**
+ * TODO: function header!!!!
+ */
 function chooseCard() {
   const index = selectBuffer.indexOf(this.index);
   if (index == -1) {
