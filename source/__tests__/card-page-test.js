@@ -1,5 +1,5 @@
 /**
- * @file Contains puppeteer tests for the cards page of the web app - Last Modified: 06/07/2023
+ * @file Contains puppeteer tests for the cards page of the web app - Last Modified: 06/09/2023
  * @author Christian Lee
  * @author Joshua Tan
  * @author Abijit Jayachandran
