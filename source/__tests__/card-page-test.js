@@ -6,7 +6,7 @@
  */
 
 describe('Basic user flow for Fortune Generation Page', () => {
-  // First, visit the landing page
+  // First, go to the card page
   beforeAll(async () => { 
       console.log("Starting card page tests...");
       await page.goto('http://localhost:8000/source/fortune-telling/card.html');
