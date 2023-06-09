@@ -80,6 +80,19 @@ function init() {
       selectCount = 1;
       break;
   }
+  /* Set the backs of the cards based off the category*/
+  for (let i = 0; i < tarotCards.length; i++) {
+    if(category === 'Love'){
+      tarotCards[i].src = `assets/card-page/love_back.png`;
+    }
+    else if(category === 'School'){
+      tarotCards[i].src = `assets/card-page/school_back.png`;
+    }
+    else if(category === 'Life'){
+      tarotCards[i].src = `assets/card-page/life_back.png`;
+    }
+    
+  }
 
   typePrediction(`Please Select ${selectCount} Card.`);
 
@@ -128,7 +141,16 @@ async function generatePrediction() {
 
   // Reset all the cards to be facing down again
   for (let i = 0; i < tarotCards.length; i++) {
-    tarotCards[i].src = `assets/card-page/backside.png`;
+    if(category === 'Love'){
+      tarotCards[i].src = `assets/card-page/love_back.png`;
+    }
+    else if(category === 'School'){
+      tarotCards[i].src = `assets/card-page/school_back.png`;
+    }
+    else if(category === 'Life'){
+      tarotCards[i].src = `assets/card-page/life_back.png`;
+    }
+    
   }
 
   /* Verify items are selected */
