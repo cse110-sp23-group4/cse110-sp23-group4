@@ -62,11 +62,6 @@ const saveButton = document.getElementById('saveFortune');
 
 
 
-/**
- * A reference to a button to reset fortunes
- * @type {HTMLElement | null}
- */
-const resetButton = document.getElementById('reset');
 
 /**
  * A reference to a button to save the fortune to localStorage
@@ -154,7 +149,7 @@ function init() {
   saveButton.style.opacity = 0.5;
 
   // Remove reset button functionality
-  resetButton.addEventListener("click", resetFortune);
+  resetButton.removeEventListener("click", resetFortune);
   resetButton.style.opacity = 0.5;
 
   /* Add event listener for return to menu button to go back to menu page */
@@ -370,15 +365,6 @@ function saveFortune() {
   // Remove event listener for save button after being clicked once
   saveButton.removeEventListener("click", saveFortune);
   saveButton.style.opacity = 0.5;
-}
-
-
-
-/**
- * Resets page to allow for new prediction
- */
-function resetFortune() {
-  location.reload();
 }
 
 /**
