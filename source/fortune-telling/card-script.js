@@ -350,7 +350,7 @@ function saveFortune() {
   predictButton.removeEventListener("click", generatePrediction);
 
   // Remove event listener for save button after being clicked once
-  saveButton.removeEventListener("click", generatePrediction);
+  saveButton.removeEventListener("click", saveFortune);
   saveButton.style.opacity = 0.5;
 }
 
