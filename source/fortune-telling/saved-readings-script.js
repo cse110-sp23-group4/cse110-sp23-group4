@@ -8,8 +8,18 @@
  * @author Joshua Tan
  * @author Abijit Jayachandran
  */
+
+/**
+ * Adds an event listener to window to call init function when the document
+ * has parsed
+ */
 window.addEventListener('DOMContentLoaded', init);
 
+
+/**
+ * Function adding event listeners for the buttons on the page
+ * and calling the function to display fortunes.
+ */
 function init() {
   /**
    * A reference to the button to go back to the menu

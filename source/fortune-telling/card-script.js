@@ -4,7 +4,11 @@
  * @author Helen Lin
  */
 
-/* TODO: The scope of these variables may be adjusted later */
+/**
+ * import addFortune function from saved-readings-script.js to add fortunes
+ * to localStorage that will be retrieved by saved-readings-script.js and 
+ * displayed in saved.html
+ */
 import { addFortune } from "./saved-readings-script.js";
 
 
@@ -14,11 +18,6 @@ import { addFortune } from "./saved-readings-script.js";
  */
 let selectCount;
 
-/**
- * Set the number of cards to appear to be 6
- * @type {number}
- */
-let cardCount = 6;
 
 /**
  * A reference to a button to get the tarot card predictions
@@ -56,6 +55,10 @@ const returnToMenuButton = document.getElementById('returnMenu');
  */
 const tarotCards = document.getElementsByClassName('card');
 
+/**
+ * Adds an event listener to window to call init function when the document
+ * has parsed
+ */
 window.addEventListener('load', init);
 
 /**
