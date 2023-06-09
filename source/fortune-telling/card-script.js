@@ -91,7 +91,7 @@ const returnToMenuButton = document.getElementById('returnMenu');
  * A reference to reset button to get new fortune
  * @type {HTMLElement | null}
  */
-const resetButton = document.getElementById('newFortune');
+const resetButton = document.getElementById('reset');
 
 
 
