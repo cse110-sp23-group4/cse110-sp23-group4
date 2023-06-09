@@ -142,12 +142,10 @@ function init() {
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
-
-  /* Add event listener for save fortune button */
-  if (saveButton != null)
-    saveButton.addEventListener("click", saveFortune);
-  // Add full opacity back to the button
-  saveButton.style.opacity = 1.0;
+    
+  // Remove save button
+  saveButton.removeEventListener("click", saveFortune);
+  saveButton.style.opacity = 0.5;
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
@@ -278,6 +276,10 @@ async function generatePrediction() {
   // Display reset button and add event listener
   newFortuneButton.addEventListener("click", init);
   newFortuneButton.style.opacity = 1;
+
+  // Display save fortube button
+  saveButton.addEventListener("click", saveFortune);
+  saveButton.style.opacity = 1.0;
 }
 
 
