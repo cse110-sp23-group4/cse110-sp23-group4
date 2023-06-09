@@ -4,8 +4,12 @@
  * @author Helen Lin
  */
 
+
+
 /* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
+
+
 
 
 /**
@@ -14,11 +18,21 @@ import { addFortune } from "./saved-readings-script.js";
  */
 let selectCount;
 
+
+/**
+ * A reference to the output interal for typing the fortune to the screen
+ */
+let typeOutputInterval;
+
+
+
 /**
  * Set the number of cards to appear to be 6
  * @type {number}
  */
 let cardCount = 6;
+
+
 
 /**
  * A reference to a button to get the tarot card predictions
@@ -26,11 +40,15 @@ let cardCount = 6;
  */
 const predictButton = document.getElementById('getTarot');
 
+
+
 /**
  * A reference to a button to save the fortune to localStorage
  * @type {HTMLElement | null}
  */
 const saveButton = document.getElementById('saveFortune');
+
+
 
 /**
  * A reference to a button to save the fortune to localStorage
@@ -38,11 +56,15 @@ const saveButton = document.getElementById('saveFortune');
  */
 const saveReadingsButton = document.getElementById('savedReadingsPage');
 
+
+
 /**
  * Array containing the id strings of all selected cards
  * @type {string[]}
  */
 let selectBuffer = [];
+
+
 
 /**
  * A reference to back button HTMlElement on card.html
@@ -50,22 +72,45 @@ let selectBuffer = [];
  */
 const returnToMenuButton = document.getElementById('returnMenu');
 
+
+
+/**
+ * A reference to reset button to get new fortune
+ * @type {HTMLElement | null}
+ */
+const newFortuneButton = document.getElementById('newFortune');
+
+
+
 /**
  * A reference to all card images
  * @type {HTMLCollection<img> | null}
  */
 const tarotCards = document.getElementsByClassName('card');
 
+
+
 window.addEventListener('load', init);
+
+
 
 /**
  * Function containing all intial setup functions for generating cards
  * and event listeners for the buttons on the page
  */
 function init() {
+  // Stop typing previous response if there is one being typed
+  clearInterval(typeOutputInterval);
+
+  // Add event listener to all the tarot cards so they can be selected once again
   for (let i = 0; i < tarotCards.length; i++) {
     tarotCards[i].index = i;
     tarotCards[i].addEventListener("click", chooseCard);
+  }
+
+  // Reset all the cards to be facing down again
+  for (let i = 0; i < tarotCards.length; i++) {
+    tarotCards[i].src = `assets/card-page/backside.png`;
   }
 
   /* Get category from local storage */
@@ -89,6 +134,8 @@ function init() {
   /* Add event listener for save fortune button */
   if (saveButton != null)
     saveButton.addEventListener("click", saveFortune);
+  // Add full opacity back to the button
+  saveButton.style.opacity = 1.0;
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
@@ -99,7 +146,13 @@ function init() {
   /* Add event listener to save readings button to go to saved readings page*/
   if (saveReadingsButton != null)
     saveReadingsButton.addEventListener("click", goToSavedReadings);
+
+  /* Hide the the new fortune button and add event listener to it */
+  newFortuneButton.removeEventListener("click", init);
+  newFortuneButton.style.opacity = 0.5;
 }
+
+
 
 /**
  * Function that changes to page back to the main menu
@@ -108,12 +161,16 @@ function returnToMenu() {
   window.location.href = "menu.html";
 }
 
+
+
 /**
  * Function that changes the page to the save readings page
  */
 function goToSavedReadings() {
   window.location.href = "saved.html";
 }
+
+
 
 /**
  * A function used for an event listener in order to generate the prediction
@@ -125,11 +182,6 @@ async function generatePrediction() {
    * @type {HTMLElement | null}
    */
   const predictOut = document.getElementById('output');
-
-  // Reset all the cards to be facing down again
-  for (let i = 0; i < tarotCards.length; i++) {
-    tarotCards[i].src = `assets/card-page/backside.png`;
-  }
 
   /* Verify items are selected */
   if (selectBuffer && selectBuffer.length === selectCount) {
@@ -198,11 +250,13 @@ async function generatePrediction() {
     // Center the selected card
     centerSelectedCard();
 
-    /* Give the user a prediction */
+    /* Give the user a prediction and get the interval to stop typing is necessary */
     typePrediction(outputContent);
 
-    // Remove listeners
+    // Remove listener for predict button
     predictButton.removeEventListener("click", generatePrediction);
+
+    // Remove event listeners for each tarot card so they can be selected
     for (let i = 0; i < tarotCards.length; i++) {
       tarotCards[i].removeEventListener("click", chooseCard);
     }
@@ -211,7 +265,13 @@ async function generatePrediction() {
     /* Display a message that the user selected nothing */
     typePrediction(`Please Select ${selectCount} Card.`);
   }
+
+  // Display reset button and add event listener
+  newFortuneButton.addEventListener("click", init);
+  newFortuneButton.style.opacity = 1;
 }
+
+
 
 /**
  * Takes in the prediction generate and types out the
@@ -226,7 +286,7 @@ function typePrediction(prediction) {
   predictOut.textContent = "";
 
   //Interval function used to type out one char at a time
-  const typeOutputInterval = setInterval(()=> {
+  typeOutputInterval = setInterval(()=> {
     predictOut.textContent +=predictionChars[predictionCharsIndex];
     predictionCharsIndex++;
 
@@ -234,30 +294,43 @@ function typePrediction(prediction) {
     if (predictionCharsIndex === predictionChars.length) {
       clearInterval(typeOutputInterval);
     }
-  }, 50);
+  }, 30);
   setTimeout(() => {
     console.log((document.querySelector('#output')).innerText);
   }, 2000);
+
+  return typeOutputInterval;
 }
 
 
+/**
+ * Function enables the selection of cards on the fortune generation page. When
+ * a card is selected, it is added to a buffer that keeps track of selected cards
+ * as space and category allows. When buffer grows too big, remove first element
+ * in buffer and add the new element. Selected card has permanent box shadow
+ */
 function chooseCard() {
+  // Gets index of tarot card inside card buffer if it exists
   const index = selectBuffer.indexOf(this.index);
+
+  // Push card to buffer if it isn't inside, if already inside then deselect card and remove it
   if (index == -1) {
     selectBuffer.push(this.index);
     tarotCards[this.index].style.boxShadow = "0 0 10px 5px #ad08c7";
 
+    // If buffer is too big then remove first element
     if (selectBuffer.length > selectCount) {
       tarotCards[selectBuffer[0]].style.boxShadow = null;
       selectBuffer.shift();
     }
-
   } else {
     tarotCards[this.index].style.boxShadow = null;
 
     selectBuffer.splice(index, 1);
   }
 }
+
+
 
 /**
  * Function to save a fortune to localStorage for later display on the save
@@ -272,7 +345,16 @@ function saveFortune() {
 
   // pass in fortune response, current cateogry, and date
   addFortune(predictOutText, category, new Date());
+
+  // Remove listener for save fortune button
+  predictButton.removeEventListener("click", generatePrediction);
+
+  // Remove event listener for save button after being clicked once
+  saveButton.removeEventListener("click", generatePrediction);
+  saveButton.style.opacity = 0.5;
 }
+
+
 
 /**
  * Generates an array of non-duplicate random numbers within a given range.
@@ -295,6 +377,8 @@ function generateNonDuplicateRandomNumbers(min, max, count) {
 
   return numbers;
 }
+
+
 
 /**
  * Function to woosh or animate to the cards from a deck on the left
@@ -334,6 +418,8 @@ function wooshCards() {
 		}
 	}
 }
+
+
 
 /**
  * Function to dewoosh or animate to the left into a deck the unselected cards
@@ -386,6 +472,8 @@ function dewooshCards() {
     }
 	}
 }
+
+
 
 
 /**
