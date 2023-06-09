@@ -153,7 +153,9 @@ function init() {
   saveButton.removeEventListener("click", saveFortune);
   saveButton.style.opacity = 0.5;
 
+  // Remove reset button functionality
   resetButton.addEventListener("click", resetFortune);
+  resetButton.style.opacity = 0.5;
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
