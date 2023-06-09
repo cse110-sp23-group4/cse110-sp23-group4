@@ -140,6 +140,7 @@ async function generatePrediction() {
   const predictOut = document.getElementById('output');
 
   // Reset all the cards to be facing down again
+  let category = JSON.parse(localStorage.getItem("category"));
   for (let i = 0; i < tarotCards.length; i++) {
     if(category === 'Love'){
       tarotCards[i].src = `assets/card-page/love_back.png`;
