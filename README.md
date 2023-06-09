@@ -51,6 +51,7 @@ ___
 [Powell Rangers About Us Page](https://cse110-sp23-group4.github.io/cse110-sp23-group4/admin/team.html)
 
 **Team Leads:** Brandon Imai and Nakul Nandhakumar
+
 **Developers:** Christian Lee, Michi Wada, Helen Lin, Ezgi Bayraktaroglu, Joshua Tan, Khanh Le, Samuel Au, and Abijit Jayachandran
 
 
