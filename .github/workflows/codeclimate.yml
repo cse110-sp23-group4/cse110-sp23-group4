@@ -1,4 +1,4 @@
-name: build
+name: Code Climate Test Report
 on:
   push:
     branches:
