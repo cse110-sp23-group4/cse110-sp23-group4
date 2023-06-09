@@ -33,6 +33,12 @@ const predictButton = document.getElementById('getTarot');
 const saveButton = document.getElementById('saveFortune');
 
 /**
+ * A reference to a button to reset fortunes
+ * @type {HTMLElement | null}
+ */
+const resetButton = document.getElementById('reset');
+
+/**
  * A reference to a button to save the fortune to localStorage
  * @type {HTMLElement | null}
  */
@@ -89,6 +95,8 @@ function init() {
   /* Add event listener for save fortune button */
   if (saveButton != null)
     saveButton.addEventListener("click", saveFortune);
+
+  resetButton.addEventListener("click", resetFortune);
 
   /* Add event listener for return to menu button to go back to menu page */
   returnToMenuButton.addEventListener("click", returnToMenu);
@@ -272,6 +280,13 @@ function saveFortune() {
 
   // pass in fortune response, current cateogry, and date
   addFortune(predictOutText, category, new Date());
+}
+
+/**
+ * Resets page to allow for new prediction
+ */
+function resetFortune() {
+  location.reload();
 }
 
 /**
