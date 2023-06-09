@@ -2,6 +2,9 @@
  * @file JavaScript Code for card.html - Last Modified: 06/04/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
+ * @author Nakul Nandhakumar
+ * @author Joshua Tan
+ * @author Khanh Le
  */
 
 
@@ -9,6 +12,13 @@
 /* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
 
+
+
+/**
+ * A reference to the fortuneText when prediction occurs.
+ * @type {string}
+ */
+let fortuneText = "";
 
 
 
@@ -19,8 +29,10 @@ import { addFortune } from "./saved-readings-script.js";
 let selectCount;
 
 
+
 /**
  * A reference to the output interal for typing the fortune to the screen
+ * 
  */
 let typeOutputInterval;
 
@@ -183,6 +195,9 @@ async function generatePrediction() {
    */
   const predictOut = document.getElementById('output');
 
+  // Empty the previous fortune text
+  fortuneText = "";
+
   /* Verify items are selected */
   if (selectBuffer && selectBuffer.length === selectCount) {
 
@@ -222,12 +237,6 @@ async function generatePrediction() {
     if (category == undefined)
       category = 'Life';
 
-    /**
-     * String used for storing the output of the prediction
-     * @type {string}
-     */
-    let outputContent = "";
-
     // Get the JSON containing all the fortune responses
     let response = await fetch("./assets/fortunes/fortunes.json");
     let fortuneResponses = await response.json();
@@ -239,7 +248,7 @@ async function generatePrediction() {
         // Pick random fortune response within card subsection to use
         let cardResponse = Math.floor(Math.random() * 2);
 
-      outputContent += fortuneResponses[category][cards[i]][cardResponse];
+      fortuneText += fortuneResponses[category][cards[i]][cardResponse];
 
 			// Add select class to selected cards so deWoosh animation can occur
 			tarotCards[selectBuffer[i]].classList.add("select");
@@ -251,7 +260,7 @@ async function generatePrediction() {
     centerSelectedCard();
 
     /* Give the user a prediction and get the interval to stop typing is necessary */
-    typePrediction(outputContent);
+    typePrediction(fortuneText);
 
     // Remove listener for predict button
     predictButton.removeEventListener("click", generatePrediction);
@@ -337,14 +346,11 @@ function chooseCard() {
  * fortunes page. Executes when the save fortune button is pressed
  */
 function saveFortune() {
-  // Get the output text of the fortune response
-  const predictOutText = document.getElementById('output').innerHTML;
-
   // Get the current cateogry as a string
   let category = JSON.parse(localStorage.getItem("category"));
 
   // pass in fortune response, current cateogry, and date
-  addFortune(predictOutText, category, new Date());
+  addFortune(fortuneText, category, new Date());
 
   // Remove listener for save fortune button
   predictButton.removeEventListener("click", generatePrediction);
