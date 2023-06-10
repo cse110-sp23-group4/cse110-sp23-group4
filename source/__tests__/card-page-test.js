@@ -37,6 +37,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
     expect(outputText).toBe('Please Select 1 Card.');    
   }, 5000);
 
+  
   test("Verify user cannot predict a second time", async() => {
     // Select a Card
     await page.$eval('#card1', (card) => {
@@ -70,6 +71,25 @@ describe('Basic user flow for Fortune Generation Page', () => {
   test("Check that 6 cards were generated", async () => {
     const cards = await page.$$('.card');
     expect(cards.length).toBe(6);
+  });
+
+  test('Check that hovering over card creates box shadow', async () => {
+    await page.goto('http://localhost:8000/source/fortune-telling/card.html');
+    const cards = await page.$$('.card');
+    for(let i = 0; i < cards.length; i++){
+      const oldShadow = await page.$eval('button', el => {
+        return getComputedStyle(el).getPropertyValue('background-color');
+      });
+
+      await cards[i].hover(); 
+
+      const newShadow = await page.$eval('#card'+(i+1), el => {
+        return getComputedStyle(el).getPropertyValue('box-shadow');
+      });
+
+      expect(oldShadow).not.toBe(newShadow);
+      expect(newShadow).toBe('rgb(173, 8, 199) 0px 0px 10px 5px');
+    }
   });
 
   test('Check that clicking card creates shadow', async () => {
