@@ -136,7 +136,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
       return text.innerText;
     });
     console.log(text);
-    let badResponses = ['', 'Please Select 1 Card.']
+    let badResponses = ['', 'Please Select 1 Card.'];
     expect(badResponses).not.toContain(text);
   }, 30000);
   
