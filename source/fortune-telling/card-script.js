@@ -270,6 +270,7 @@ async function generatePrediction() {
 
     // Remove listener for predict button
     predictButton.removeEventListener("click", generatePrediction);
+    predictButton.style.opacity = 0.5;
 
     // Remove event listeners for each tarot card so they can be selected
     for (let i = 0; i < tarotCards.length; i++) {
