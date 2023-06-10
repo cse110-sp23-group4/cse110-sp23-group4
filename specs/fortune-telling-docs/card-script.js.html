@@ -35,12 +35,9 @@
  * @author Khanh Le
  */
 
-/**
- * import addFortune function from saved-readings-script.js to add fortunes
- * to localStorage that will be retrieved by saved-readings-script.js and 
- * displayed in saved.html
- */
 
+
+/* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
 
 
@@ -58,6 +55,24 @@ let fortuneText = "";
  * @type {number}
  */
 let selectCount;
+
+
+
+/**
+ * A reference to the output interal for typing the fortune to the screen
+ * 
+ */
+let typeOutputInterval;
+
+
+
+/**
+ * Set the number of cards to appear to be 6
+ * @type {number}
+ */
+let cardCount = 6;
+
+
 
 /**
  * A reference to a button to get the tarot card predictions
@@ -114,10 +129,8 @@ const resetButton = document.getElementById('reset');
  */
 const tarotCards = document.getElementsByClassName('card');
 
-/**
- * Adds an event listener to window to call init function when the document
- * has parsed
- */
+
+
 window.addEventListener('load', init);
 
 
@@ -332,6 +345,7 @@ function typePrediction(prediction) {
 
   return typeOutputInterval;
 }
+
 
 /**
  * Function enables the selection of cards on the fortune generation page. When
@@ -563,13 +577,13 @@ function centerSelectedCard() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#centerSelectedCard">centerSelectedCard</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#chooseCard">chooseCard</a></li><li><a href="global.html#clearFortunes">clearFortunes</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#dewooshCards">dewooshCards</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#fortuneText">fortuneText</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#resetButton">resetButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li><li><a href="global.html#typePrediction">typePrediction</a></li><li><a href="global.html#wooshCards">wooshCards</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#centerSelectedCard">centerSelectedCard</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#chooseCard">chooseCard</a></li><li><a href="global.html#clearFortunes">clearFortunes</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#dewooshCards">dewooshCards</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#fortuneText">fortuneText</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#resetButton">resetButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li><li><a href="global.html#typeOutputInterval">typeOutputInterval</a></li><li><a href="global.html#typePrediction">typePrediction</a></li><li><a href="global.html#wooshCards">wooshCards</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 10 2023 01:59:06 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 10 2023 02:09:17 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
