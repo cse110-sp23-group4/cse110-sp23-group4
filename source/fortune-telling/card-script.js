@@ -7,12 +7,9 @@
  * @author Khanh Le
  */
 
-/**
- * import addFortune function from saved-readings-script.js to add fortunes
- * to localStorage that will be retrieved by saved-readings-script.js and 
- * displayed in saved.html
- */
 
+
+/* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
 
 
@@ -30,6 +27,24 @@ let fortuneText = "";
  * @type {number}
  */
 let selectCount;
+
+
+
+/**
+ * A reference to the output interal for typing the fortune to the screen
+ * 
+ */
+let typeOutputInterval;
+
+
+
+/**
+ * Set the number of cards to appear to be 6
+ * @type {number}
+ */
+let cardCount = 6;
+
+
 
 /**
  * A reference to a button to get the tarot card predictions
@@ -86,10 +101,8 @@ const resetButton = document.getElementById('reset');
  */
 const tarotCards = document.getElementsByClassName('card');
 
-/**
- * Adds an event listener to window to call init function when the document
- * has parsed
- */
+
+
 window.addEventListener('load', init);
 
 
@@ -304,6 +317,7 @@ function typePrediction(prediction) {
 
   return typeOutputInterval;
 }
+
 
 /**
  * Function enables the selection of cards on the fortune generation page. When
