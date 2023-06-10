@@ -21,6 +21,6 @@ describe('Basic user flow for Saved Readings Page', () => {
         console.log(page2Title);
 
         expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
-        expect(page2Title).toBe('This is the menu page prototype');
+        expect(page2Title).toBe('The Fortune Hut - Menu');
     }, 10000);
 });

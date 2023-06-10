@@ -1,6 +1,8 @@
 # Testing FAQ
-If you're having trouble running the tests, try the following:
+This folder contains all the test files for *The Fortune Hut*
 
+If you're having trouble running the tests, try the following:
+___
 From the root directory:
 - run -> `npm install`
 
