@@ -36,7 +36,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
     expect(outputText).toBe('Please Select 1 Card.');    
   }, 5000);
-
   
   test("Verify user cannot predict a second time", async() => {
     // Select a Card
@@ -81,7 +80,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
         return getComputedStyle(card).getPropertyValue('box-shadow');
       });
 
-      console.log(cards[i]);
       await page.$eval('#card' + (i+1), (card) => {
         card.click();
       });
@@ -105,9 +103,12 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
   test('Check that predict button creates fortune', async () => {
     await page.click('#getTarot');
+
+    await new Promise((resolve, reject) => setTimeout(resolve, 4000));
     const text = await page.$eval('#output', (text) => {
       return text.innerText;
     });
+    console.log(text);
     expect(text).not.toBe('');
   });
 
