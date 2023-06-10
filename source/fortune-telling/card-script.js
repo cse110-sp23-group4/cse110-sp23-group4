@@ -279,8 +279,8 @@ async function generatePrediction() {
   }
 
   // Display reset button and add event listener
-  newFortuneButton.addEventListener("click", init);
-  newFortuneButton.style.opacity = 1;
+  resetButton.addEventListener("click", init);
+  resetButton.style.opacity = 1.0;
 
   // Display save fortube button
   saveButton.addEventListener("click", saveFortune);
