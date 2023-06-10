@@ -22,7 +22,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
     expect(initialText).toBe('Please Select 1 Card.');
   });
-/*  
+  
   test("Verify user cannot predict without selecting cards", async () => {
     // Click without selecting cards
     await page.click('#getTarot');
@@ -67,7 +67,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
     expect(outputText).toBe(newText);
   }, 30000);
-*/
+
   test("Check that 6 cards were generated", async () => {
     const cards = await page.$$('.card');
     expect(cards.length).toBe(6);
