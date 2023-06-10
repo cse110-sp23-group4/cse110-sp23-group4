@@ -112,9 +112,6 @@ window.addEventListener('load', init);
  * and event listeners for the buttons on the page
  */
 function init() {
-  // Stop typing previous response if there is one being typed
-  clearInterval(typeOutputInterval);
-
   // Add event listener to all the tarot cards so they can be selected once again
   for (let i = 0; i < tarotCards.length; i++) {
     tarotCards[i].index = i;
@@ -263,7 +260,7 @@ async function generatePrediction() {
     centerSelectedCard();
 
     /* Give the user a prediction and get the interval to stop typing is necessary */
-    typePrediction(fortuneText);
+    setTimeout(typePrediction, 250, fortuneText);
 
     // Remove listener for predict button
     predictButton.removeEventListener("click", generatePrediction);
@@ -274,18 +271,18 @@ async function generatePrediction() {
       tarotCards[i].removeEventListener("click", chooseCard);
     }
 
+    // Display reset button and add event listener
+    resetButton.addEventListener("click", init);
+    resetButton.style.opacity = 1.0;
+
+    // Display save fortube button
+    saveButton.addEventListener("click", saveFortune);
+    saveButton.style.opacity = 1.0;
+
   } else {
     /* Display a message that the user selected nothing */
     typePrediction(`Please Select ${selectCount} Card.`);
   }
-
-  // Display reset button and add event listener
-  resetButton.addEventListener("click", init);
-  resetButton.style.opacity = 1.0;
-
-  // Display save fortube button
-  saveButton.addEventListener("click", saveFortune);
-  saveButton.style.opacity = 1.0;
 }
 
 
@@ -297,12 +294,16 @@ async function generatePrediction() {
  * @param {string} - Predition result to be typed out
  */
 function typePrediction(prediction) {
+  // Stop previous typing before tpying new string
+  clearInterval(typeOutputInterval);
+
+  // Get each character in the string passed in by separating based on empty string
   const predictionChars = prediction.split("");
   let predictionCharsIndex = 0;
   const predictOut = document.getElementById("output");
   predictOut.textContent = "";
 
-  //Interval function used to type out one char at a time
+  // Interval function used to type out one char at a time
   typeOutputInterval = setInterval(()=> {
     predictOut.textContent +=predictionChars[predictionCharsIndex];
     predictionCharsIndex++;
