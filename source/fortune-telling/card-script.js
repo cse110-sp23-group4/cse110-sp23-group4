@@ -119,6 +119,9 @@ function init() {
   for (let i = 0; i < tarotCards.length; i++) {
     tarotCards[i].index = i;
     tarotCards[i].addEventListener("click", chooseCard);
+
+    // Remove select class so that old card does not get centered
+		tarotCards[i].classList.remove("select");
   }
 
   // Reset all the cards to be facing down again
