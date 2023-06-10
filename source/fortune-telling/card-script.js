@@ -150,8 +150,8 @@ function init() {
     saveReadingsButton.addEventListener("click", goToSavedReadings);
 
   /* Hide the the new fortune button and add event listener to it */
-  newFortuneButton.removeEventListener("click", init);
-  newFortuneButton.style.opacity = 0.5;
+  resetButton.removeEventListener("click", init);
+  resetButton.style.opacity = 0.5;
 }
 
 
