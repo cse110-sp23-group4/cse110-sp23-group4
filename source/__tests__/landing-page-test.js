@@ -5,7 +5,7 @@
  */
 
 describe('Basic user flow for Landing Page', () => {
-    
+
     beforeAll(async () => {
         console.log("Starting landing pages tests...");
     });
@@ -45,7 +45,7 @@ describe('Basic user flow for Landing Page', () => {
         const page2URL = await page.url();
         const page2Title = await page.title();
 
-        expect(page2Title).toBe('This is the menu page prototype');
+        expect(page2Title).toBe('The Fortune Hut - Menu');
         expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
     });
 
