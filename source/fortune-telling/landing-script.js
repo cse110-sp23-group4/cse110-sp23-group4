@@ -45,10 +45,8 @@ function enterHut() {
     /* Clear all elements from page */
     pageContents.innerHTML = '';
 
-    /* Move background to line up with the hut door */
-    hutBackground.style.backgroundPosition = '50% 77.5%';
-    /* Zoom into the background image by 800% in 2 seconds */
-    hutBackground.style.backgroundSize = '1200%';
+    /* Call the entering hut animation */
+    hutBackground.style.animation= "zoom 2s forwards";
 }
 
 /* Add the listener to the landing page button */
