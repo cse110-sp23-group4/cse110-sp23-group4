@@ -22,7 +22,7 @@ describe('Basic user flow for Saved Readings Page', () => {
         const page2Title = await page.title();
 
         expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
-        expect(page2Title).toBe('This is the menu page prototype');
+        expect(page2Title).toBe('The Fortune Hut - Menu');
     });
 
     test("Check if clear fortune button clears the screen and local storage", async() => {
@@ -88,9 +88,9 @@ describe('Basic user flow for Saved Readings Page', () => {
                 day: 'numeric'
             });
 
-        expect(displayedFortuneText).toBe(localStorageFortuneText);
-        expect(displayedCategory).toBe(localStorageCategory);
-        expect(displayedDate).toBe(localStorageDate);
-  }
-    });
+          expect(displayedFortuneText).toBe(localStorageFortuneText);
+          expect(displayedCategory).toBe(localStorageCategory);
+          expect(displayedDate).toBe(localStorageDate);
+        }
+   });
 });

@@ -1,4 +1,9 @@
 /**
+ * @file JavaScript Code for menu.html
+ * @author FIGURE OUT AUTHORS AND WRITE!!
+ */
+
+/**
  * A reference to the div containing all the category Buttons on menu.html
  * @type {HTMLCollection<Element>}
  */

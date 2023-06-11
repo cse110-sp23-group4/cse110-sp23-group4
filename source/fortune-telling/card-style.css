@@ -60,20 +60,25 @@ button:hover {
 }
 
 #output {
+  background: url(assets/menu-page/wood-placard.png);
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
   display: flex;
-  padding: 0px 20px;
-  border: black;
-  border-radius: 25px;
-  font-size: 25px;
+  padding: 40px 40px;
+  margin: 20px auto;
   text-align: center;
   text-shadow: 1px 1px 2px #ad08c7;
+  font-family: 'Tangerine';
+  font-size: 50px;
   color: white;
   width: 80%;
-  margin: 20px auto;
   min-height: 200px;
+  height: 200px;
+  overflow: scroll;
   align-items: center;
   justify-content: center;
-  background: #ad08c781;
 }
 
 
