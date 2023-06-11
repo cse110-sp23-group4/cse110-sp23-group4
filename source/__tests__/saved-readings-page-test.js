@@ -113,5 +113,63 @@ describe('Basic user flow for Saved Readings Page', () => {
         }
     }); 
 
+    test("Check that saved fortunes persist after some navigation and page reloads", async () => {
+        console.log("Check if everything in localStorage is displayed...");
+        // Set up initial state of localStorage
+        await page.evaluate(() => {
+            let fortunes = [
+                ['Fortune text 1', 'Category 1', '2023-06-01'],
+                ['Fortune text 2', 'Category 2', '2023-06-02'],
+                ['Fortune text 3', 'Category 3', '2023-06-03']
+            ];
+            localStorage.setItem('fortunes', JSON.stringify(fortunes));
+            console.log(localStorage.getItem('fortunes'));
+        });
+
+        //Some navigation through the app and page reloads
+        page.reload();  
+        await page.waitForNavigation(); 
+        await (await page.$('.backButton')).click();
+        await page.waitForNavigation();
+        await(await page.$('#back')).click();
+        await page.waitForNavigation();
+        page.reload(); 
+        await page.waitForNavigation();
+        await(await page.$('button')).click();
+        await page.waitForNavigation();
+        await(await page.$('#savedReadings')).click();
+        await page.waitForNavigation();
+        page.reload();     
+        await page.waitForNavigation();
+        
+        let localStorageFortunes = await page.evaluate(() => {
+            return JSON.parse(localStorage.getItem('fortunes'));
+        });
+
+        let fortuneElements = await page.$$('.fortune');
+
+        expect(fortuneElements.length).toBe(localStorageFortunes.length);
+
+        for (let i = 0; i < fortuneElements.length; i++) {
+            let fortuneElement = fortuneElements[i];
+            let displayedFortuneText = await fortuneElement.$eval('.fortuneText', el => el.textContent);
+            let displayedCategory = await fortuneElement.$eval('.fortuneCategory', el => el.textContent);
+            let displayedDate = await fortuneElement.$eval('.fortuneDate', el => el.textContent);
+
+            let localStorageFortune = localStorageFortunes[i];
+            let localStorageFortuneText = localStorageFortune[0];
+            let localStorageCategory = localStorageFortune[1];
+            let localStorageDate = new Date(localStorageFortune[2]).toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+          expect(displayedFortuneText).toBe(localStorageFortuneText);
+          expect(displayedCategory).toBe(localStorageCategory);
+          expect(displayedDate).toBe(localStorageDate);
+        }
+    });
     
 });
