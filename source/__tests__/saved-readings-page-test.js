@@ -7,7 +7,7 @@
 
 describe('Basic user flow for Saved Readings Page', () => {
     beforeAll(async () => {
-        await page.goto('http://127.0.0.1:5500/source/fortune-telling/saved.html'); //http://127.0.0.1:8000/source/fortune-telling/saved.html
+        await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
     });
 
     test("Check if back button takes you back to the menu page on click", async() => {
@@ -20,7 +20,7 @@ describe('Basic user flow for Saved Readings Page', () => {
         const page2URL = await page.url();
         const page2Title = await page.title();
 
-        expect(page2URL).toBe('http://127.0.0.1:5500/source/fortune-telling/menu.html');//http://127.0.0.1:8000/source/fortune-telling/menu.html
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
         expect(page2Title).toBe('The Fortune Hut - Menu');
     });
 
@@ -187,8 +187,7 @@ describe('Basic user flow for Saved Readings Page', () => {
     });
     test("Check if a new fortune can be added", async () => {
         console.log("Checking if a new fortune can be added...");
-      
-        // Set up initial state of localStorage with existing fortunes
+
         await page.evaluate(() => {
           let existingFortunes = [
             ['Fortune text 1', 'Category 1', '2023-06-01'],
@@ -196,8 +195,6 @@ describe('Basic user flow for Saved Readings Page', () => {
           ];
           localStorage.setItem('fortunes', JSON.stringify(existingFortunes));
         });
-      
-        // Navigate to the saved readings page
         await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
         await page.waitForSelector('.fortune');
       
@@ -212,10 +209,8 @@ describe('Basic user flow for Saved Readings Page', () => {
         await page.click('#addFortuneButton');
         await page.waitForSelector('.fortune');
       
-        // Get the updated count of fortune elements
+
         let updatedFortuneCount = await page.$$eval('.fortune', elements => elements.length);
-      
-        // Verify that the new fortune is added
         expect(updatedFortuneCount).toBe(initialFortuneCount + 1);
       
         // Verify that the new fortune is displayed correctly
