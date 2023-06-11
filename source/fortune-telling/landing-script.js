@@ -61,6 +61,5 @@ enterButton.addEventListener('click', enterHut);
  */
 document.addEventListener("click", function() {
   let backgroundMusic = document.getElementById("music");
-  backgroundMusic.volume = 0.1;
   backgroundMusic.play();
 });
