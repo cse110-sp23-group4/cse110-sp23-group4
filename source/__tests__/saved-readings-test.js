@@ -27,7 +27,7 @@ describe('Basic user flow for Saved Readings Page', () => {
 
     test("Check if clear fortune button clears the screen and local storage", async() => {
         await page.goto("http://127.0.0.1:8000/source/fortune-telling/saved.html");
-        console.log("Check if clear fortune button clears the screen and local storage...")
+        console.log("Check if clear fortune button clears the screen and local storage...");
 
         //get clearButton and click it
         await page.waitForSelector('.clearButton');
@@ -48,7 +48,7 @@ describe('Basic user flow for Saved Readings Page', () => {
     });
 
     test("Check if everything in localStorage is displayed", async() => {
-        console.log("Check if everything in localStorage is displayed...")
+        console.log("Check if everything in localStorage is displayed...");
 
         // Set up initial state of localStorage
         await page.evaluate(() => {
