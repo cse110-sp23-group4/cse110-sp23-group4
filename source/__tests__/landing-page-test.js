@@ -1,6 +1,7 @@
 /**
  * @file Contains puppeteer tests for the landing page of the web app
  * @author Abijit Jayachandran
+ * @author Michi Wada
  */
 
 describe('Basic user flow for Landing Page', () => {
