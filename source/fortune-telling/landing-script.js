@@ -1,9 +1,10 @@
 /**
  * @file Script to control the landing page's functionality including the zoom 
- * in animation to enter the hut. - Last Modified: 06/06/2023
+ * in animation to enter the hut. - Last Modified: 06/11/2023
  * @author Nakul Nandhakumar
  * @author Joshua Tan
  * @author Abijit Jayachandran
+ * @author Helen Lin
  */
 
 /**
