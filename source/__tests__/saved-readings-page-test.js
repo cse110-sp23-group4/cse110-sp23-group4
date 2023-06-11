@@ -7,7 +7,6 @@
 
 describe('Basic user flow for Saved Readings Page', () => {
     beforeAll(async () => {
-        //Note this is a personal Live Server Link. So, it will not work in general.
         await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
     });
 
@@ -92,5 +91,27 @@ describe('Basic user flow for Saved Readings Page', () => {
           expect(displayedCategory).toBe(localStorageCategory);
           expect(displayedDate).toBe(localStorageDate);
         }
-   });
+    });
+
+    test("Check if all buttons have hover effect", async () => {
+        console.log("Check if all buttons have hover effect...");
+        let buttons = await page.$$('button');
+        let numButtons = buttons.length;
+
+        prevBoxShadows = page.$$('button', el => {
+            return getComputedStyle(el).getPropertyValue('box-shadow');
+        });
+
+        for(let i = 0; i < numButtons; i++){
+            await buttons[i].hover();
+
+            const newBoxShadows = await page.$$('button', el => {
+                return getComputedStyle(el).getPropertyValue('box-shadow');
+            });
+
+            expect(prevBoxShadows[i]).not.toBe(newBoxShadows[i]);
+        }
+    }); 
+
+    
 });
