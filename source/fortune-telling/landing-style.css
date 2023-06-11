@@ -17,6 +17,9 @@ body, h1, p {
 /* Adds background picture of hut and change background colour to match*/ 
 html {
     background: url(assets/landing-page/backdrop.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     background-color: rgb(2, 31, 2); /*change background color to match hut picture */
 }
@@ -26,10 +29,16 @@ html {
     from {
         /* Switch from cover to 100% 100%
            because cover doesn't work with animation */
+        -webkit-background-size:  100% 100%;
+        -moz-background-size:  100% 100%;
+        -o-background-size:  100% 100%;
         background-size: 100% 100%;
     }
     to {
-        background-size: 1000% 1200%;
+        -webkit-background-size: 1200% 1200%;
+        -moz-background-size: 1200% 1200%;
+        -o-background-size: 1200% 1200%;
+        background-size: 1200% 1200%;
         background-position: 50% 80%;
     }
   }
