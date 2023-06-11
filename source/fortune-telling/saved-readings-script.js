@@ -8,8 +8,18 @@
  * @author Joshua Tan
  * @author Abijit Jayachandran
  */
+
+/**
+ * Adds an event listener to window to call init function when the document
+ * has parsed
+ */
 window.addEventListener('DOMContentLoaded', init);
 
+
+/**
+ * Function adding event listeners for the buttons on the page
+ * and calling the function to display fortunes.
+ */
 function init() {
   /**
    * A reference to the button to go back to the menu
@@ -168,11 +178,21 @@ function displayFortunes() {
 		});
 		fortuneDate.classList.add("fortuneDate");
 		// Add Delete Button
-		let deleteButton = document.createElement('button');
-		deleteButton.textContent = 'Delete';
+		let deleteButton = document.createElement('img');
+    deleteButton.src = "assets/saved-readings-page/trash.png";
+    deleteButton.style.borderRadius = '5px';
+    // Red border on mouse over
+    deleteButton.addEventListener('mouseover', () => {
+      deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
+    });
+    // No border color when not hovering
+    deleteButton.addEventListener('mouseout', () => {
+      deleteButton.style.boxShadow = '';
+    });
+    // Delete fortune on click
 		deleteButton.addEventListener('click', () => {
-			deleteFortune(i);
-			displayFortunes();
+      deleteFortune(i);
+      displayFortunes();
 		});
 
 		// adds elements with fortune text, category, and date to the fortune div wrapper
@@ -189,7 +209,7 @@ function displayFortunes() {
  * We pass the index of the fortune that it has in the localstorage array
  * and splice the array to remove that one index. Check if it the index is greater
  * than -1.
- * @param {int} fortuneIndex - the index of the fortune in the localstorage array
+ * @param {number} fortuneIndex - the index of the fortune in the localstorage array
  */
 function deleteFortune(fortuneIndex) {
 	let savedFortunes = getFortunes();

@@ -10,6 +10,7 @@ describe('Basic user flow for Menu Page', () => {
         console.log("Menu page tests starting...");
     });
 
+    //Visit the menu page before every test.
     beforeEach(async () => {
         await page.goto('http://127.0.0.1:8000/source/fortune-telling/menu.html');
     });
@@ -47,7 +48,7 @@ describe('Basic user flow for Menu Page', () => {
         const page2URL = await page.url();
         const page2Title = await page.title();
 
-        expect(page2Title).toBe('This is the prototype history page');
+        expect(page2Title).toBe('The Fortune Hut - Saved Readings');
         expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/saved.html');
     });
 
@@ -60,7 +61,7 @@ describe('Basic user flow for Menu Page', () => {
         const page2URL = await page.url();
         const page2Title = await page.title();
 
-        expect(page2Title).toBe('The Fortune Hut');
+        expect(page2Title).toBe('The Fortune Hut - Landing');
         expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/landing.html');
     });
 
@@ -99,7 +100,7 @@ describe('Basic user flow for Menu Page', () => {
             const page2URL = await page.url();
             const page2Title = await page.title();
 
-            expect(page2Title).toBe('Tarot Beta');
+            expect(page2Title).toBe('The Fortune Hut - Fortune Generation');
             expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/card.html');
 
             page.goto('http://127.0.0.1:8000/source/fortune-telling/menu.html');
