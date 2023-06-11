@@ -1,36 +1,38 @@
 /**
- * @file Contains puppeteer tests for the saved readings page of the web app
+ * @file Contains puppeteer tests for the saved readings page of the web app - Last Modified: 06/11/2023
  * @author Samuel Au
  * @author Michi Wada
+ * @author Abijit Jayachandran 
  */
 
 describe('Basic user flow for Saved Readings Page', () => {
     beforeAll(async () => {
         //Note this is a personal Live Server Link. So, it will not work in general.
-        await page.goto('http://127.0.0.1:5500/source/fortune-telling/saved.html');
+        await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
     });
+
     test("Check if back button takes you back to the menu page on click", async() => {
-        console.log("Checking if back button takes you back to the menu page on click.");
+        console.log("Checking if back button takes you back to the menu page on click...");
 
         const button = await page.$('.backButton');
         await button.click();
         await page.waitForNavigation();
 
         const page2URL = await page.url();
-        console.log(page2URL);
         const page2Title = await page.title();
-        console.log(page2Title);
 
-        expect(page2URL).toBe('http://127.0.0.1:5500/source/fortune-telling/menu.html');
+        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
         expect(page2Title).toBe('This is the menu page prototype');
-    }, 10000);
+    });
+
     test("Check if clear fortune button clears the screen and local storage", async() => {
-        //test times out
+        await page.goto("http://127.0.0.1:8000/source/fortune-telling/saved.html");
+        console.log("Check if clear fortune button clears the screen and local storage...")
+
+        //get clearButton and click it
         await page.waitForSelector('.clearButton');
-        const button = await page.$('.clearButton');
-        console.log(button);
-        await button.click();
-        //await page.waitForNavigation();
+        const clearButton = await page.$('.clearButton');
+        await clearButton.click();
 
         await page.waitForFunction(() => {
             return document.querySelector('.fortune') === null;
@@ -44,7 +46,10 @@ describe('Basic user flow for Saved Readings Page', () => {
         });
         expect(localStorageValue).toBeNull();
     });
+
     test("Check if everything in localStorage is displayed", async() => {
+        console.log("Check if everything in localStorage is displayed...")
+
         // Set up initial state of localStorage
         await page.evaluate(() => {
             let fortunes = [
@@ -53,11 +58,11 @@ describe('Basic user flow for Saved Readings Page', () => {
                 ['Fortune text 3', 'Category 3', '2023-06-03']
             ];
             localStorage.setItem('fortunes', JSON.stringify(fortunes));
+            console.log(localStorage.getItem('fortunes'));
         });
 
-        // test times out...
-        //await page.waitForSelector('.fortune');
-        await page.waitForNavigation();
+        page.reload(); 
+        await page.waitForNavigation(); 
 
         let localStorageFortunes = await page.evaluate(() => {
             return JSON.parse(localStorage.getItem('fortunes'));
