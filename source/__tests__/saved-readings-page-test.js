@@ -114,7 +114,7 @@ describe('Basic user flow for Saved Readings Page', () => {
     }); 
 
     test("Check that saved fortunes persist after some navigation and page reloads", async () => {
-        console.log("Check if everything in localStorage is displayed...");
+        console.log("Check that saved fortunes persist through navigation and reloads...");
         // Set up initial state of localStorage
         await page.evaluate(() => {
             let fortunes = [
@@ -172,4 +172,17 @@ describe('Basic user flow for Saved Readings Page', () => {
         }
     });
     
+    test("Check that you can delete individual fortunes", async () => {
+        const deleteIcon = await page.$('img');
+        await deleteIcon.click();
+
+        let localStorageFortunes = await page.evaluate(() => {
+            return JSON.parse(localStorage.getItem('fortunes'));
+        });
+
+        let fortuneElements = await page.$$('.fortune');
+
+        expect(fortuneElements.length).toBe(2);
+        expect(fortuneElements.length).toBe(localStorageFortunes.length);
+    });
 });
