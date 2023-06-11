@@ -24,3 +24,8 @@
 - Wrote a custom GitHub action to run our testing suite on push to any branch
 - Runs all tests written in [test](../../source/__tests__/) using `npm run test`
 - Config file is written so that deployment is consistent on local and remote machines
+
+### Code Climate - Code Quality Checker
+- Currently using Code Climate as our code quality software
+- Linked to our [README](../../README.md) so that stats for maintainability and technical debt are updated in real time.
+- Errors in testing files are bypassed
