@@ -7,7 +7,7 @@
 
 describe('Basic user flow for Saved Readings Page', () => {
     beforeAll(async () => {
-        await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
+        await page.goto('http://127.0.0.1:5500/source/fortune-telling/saved.html'); //http://127.0.0.1:8000/source/fortune-telling/saved.html
     });
 
     test("Check if back button takes you back to the menu page on click", async() => {
@@ -20,7 +20,7 @@ describe('Basic user flow for Saved Readings Page', () => {
         const page2URL = await page.url();
         const page2Title = await page.title();
 
-        expect(page2URL).toBe('http://127.0.0.1:8000/source/fortune-telling/menu.html');
+        expect(page2URL).toBe('http://127.0.0.1:5500/source/fortune-telling/menu.html');//http://127.0.0.1:8000/source/fortune-telling/menu.html
         expect(page2Title).toBe('The Fortune Hut - Menu');
     });
 
@@ -185,4 +185,52 @@ describe('Basic user flow for Saved Readings Page', () => {
         expect(fortuneElements.length).toBe(2);
         expect(fortuneElements.length).toBe(localStorageFortunes.length);
     });
+    test("Check if a new fortune can be added", async () => {
+        console.log("Checking if a new fortune can be added...");
+      
+        // Set up initial state of localStorage with existing fortunes
+        await page.evaluate(() => {
+          let existingFortunes = [
+            ['Fortune text 1', 'Category 1', '2023-06-01'],
+            ['Fortune text 2', 'Category 2', '2023-06-02'],
+          ];
+          localStorage.setItem('fortunes', JSON.stringify(existingFortunes));
+        });
+      
+        // Navigate to the saved readings page
+        await page.goto('http://127.0.0.1:8000/source/fortune-telling/saved.html');
+        await page.waitForSelector('.fortune');
+      
+        // Get the initial count of fortune elements
+        let initialFortuneCount = await page.$$eval('.fortune', elements => elements.length);
+      
+        // Simulate adding a new fortune
+        const newFortuneText = 'New fortune text';
+        const newFortuneCategory = 'New category';
+        await page.type('#fortuneText', newFortuneText);
+        await page.type('#fortuneCategory', newFortuneCategory);
+        await page.click('#addFortuneButton');
+        await page.waitForSelector('.fortune');
+      
+        // Get the updated count of fortune elements
+        let updatedFortuneCount = await page.$$eval('.fortune', elements => elements.length);
+      
+        // Verify that the new fortune is added
+        expect(updatedFortuneCount).toBe(initialFortuneCount + 1);
+      
+        // Verify that the new fortune is displayed correctly
+        let lastFortuneElement = await page.$('.fortune:last-child');
+        let displayedFortuneText = await lastFortuneElement.$eval('.fortuneText', el => el.textContent);
+        let displayedCategory = await lastFortuneElement.$eval('.fortuneCategory', el => el.textContent);
+        expect(displayedFortuneText).toBe(newFortuneText);
+        expect(displayedCategory).toBe(newFortuneCategory);
+      
+        // Verify that the new fortune is added to the localStorage
+        let localStorageFortunes = await page.evaluate(() => {
+          return JSON.parse(localStorage.getItem('fortunes'));
+        });
+        let lastLocalStorageFortune = localStorageFortunes[localStorageFortunes.length - 1];
+        expect(lastLocalStorageFortune[0]).toBe(newFortuneText);
+        expect(lastLocalStorageFortune[1]).toBe(newFortuneCategory);
+      });
 });
