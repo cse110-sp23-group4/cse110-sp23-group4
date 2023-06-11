@@ -1,6 +1,6 @@
 /**
- * @file JavaScript Code for menu.html
- * @author FIGURE OUT AUTHORS AND WRITE!!
+ * @file JavaScript Code for menu.html - Last Modified 6/11/2023
+ * @author Samuel Au
  */
 
 /**
@@ -39,7 +39,22 @@ const savedReadingsButton = document.getElementById('savedReadings');
 function setCardLink(i) {
   /* Set data in local storage based on clicked category */
   localStorage.setItem('category', JSON.stringify(titles[i]));
-  window.location.href = 'card.html';
+  setTimeout(function() {
+    window.location.href = "card.html";
+  }, 400);
+}
+
+/**
+ * Function that plays sound when buttons are clicked
+ */
+function playClickSound() {
+  let buttons = document.getElementsByTagName("button");
+  for (let button of buttons) {
+    button.addEventListener('click', () => {
+      const sound = document.getElementById("click");
+      sound.play();
+    });
+  }
 }
 
 /**
@@ -47,7 +62,9 @@ function setCardLink(i) {
  * necessary actions when the landing page is clicked on by the user
  */
 function setLandingLink() {
-  window.location.href = 'landing.html';
+  setTimeout(function() {
+    window.location.href = "landing.html";
+  }, 400);
 }
 
 /**
@@ -55,7 +72,9 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  window.location.href = 'saved.html';
+  setTimeout(function() {
+    window.location.href = "saved.html";
+  }, 400);
 }
 
 /**
@@ -75,7 +94,10 @@ function createCategoryButtons() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', createCategoryButtons);
+window.addEventListener('DOMContentLoaded', () =>{
+  createCategoryButtons();
+  setTimeout(playClickSound, 100);
+});
 
 /*
  * Adds an onClick listner to the reference to the back button html element on

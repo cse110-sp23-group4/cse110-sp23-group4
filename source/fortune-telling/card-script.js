@@ -1,10 +1,11 @@
 /**
- * @file JavaScript Code for card.html - Last Modified: 06/04/2023
+ * @file JavaScript Code for card.html - Last Modified: 06/11/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
  * @author Nakul Nandhakumar
  * @author Joshua Tan
  * @author Khanh Le
+ * @author Samuel Au
  */
 
 
@@ -141,6 +142,9 @@ function init() {
 
   typePrediction(`Please Select ${selectCount} Card.`);
 
+  /* Play sound when pressing buttons */
+   playClickSound();
+
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
   predictButton.style.opacity = 1.0;
@@ -164,13 +168,26 @@ function init() {
   resetButton.style.opacity = 0.5;
 }
 
-
+/**
+ * Function that plays sound when buttons are clicked
+ */
+function playClickSound() {
+  let buttons = document.getElementsByTagName("button");
+  for (let button of buttons) {
+    button.addEventListener('click', () => {
+      const sound = document.getElementById("click");
+      sound.play();
+    });
+  }
+}
 
 /**
  * Function that changes to page back to the main menu
  */
 function returnToMenu() {
-  window.location.href = "menu.html";
+  setTimeout(function() {
+    window.location.href = "menu.html";
+  }, 400);
 }
 
 
@@ -179,7 +196,9 @@ function returnToMenu() {
  * Function that changes the page to the save readings page
  */
 function goToSavedReadings() {
-  window.location.href = "saved.html";
+  setTimeout(function() {
+    window.location.href = "saved.html";
+  }, 400);
 }
 
 
