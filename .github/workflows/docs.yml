@@ -1,3 +1,5 @@
+# JSDocs workflow to generate documentation
+# Authors: Abijit Jayachandran and Brandon Imai
 name: Generate JSDocs
 
 on:
