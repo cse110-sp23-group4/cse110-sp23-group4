@@ -12,6 +12,7 @@ describe('Basic user flow for Landing Page', () => {
     // Visit the landing page before every test.
     beforeEach(async () => {
         await page.goto('http://127.0.0.1:8000/source/fortune-telling/landing.html');
+        //await page.waitForNavigation(); 
     });
 
     test("Check if button changes colour on hover", async () => {

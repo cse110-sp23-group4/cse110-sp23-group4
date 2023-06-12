@@ -69,14 +69,14 @@ enterButton.addEventListener('click', () => {
 });
 
 
-/* Add event listener to start music when DOMContentLoaded */
+// /* Add event listener to start music when DOMContentLoaded */
 document.addEventListener("DOMContentLoaded", startBackgroundMusic());
 
 /**
- * Function which begins playing the background track
+ * Reduce background music volume
  */
 function startBackgroundMusic() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
-  backgroundMusic.play();
+  backgroundMusic.play(); 
 }
