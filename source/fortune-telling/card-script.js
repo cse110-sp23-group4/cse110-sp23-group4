@@ -77,7 +77,10 @@ const resetButton = document.getElementById('reset');
  */
 const tarotCards = document.getElementsByClassName('card');
 
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+  init();
+  setTimeout(playSparkle, 500);
+});
 
 /**
  * Function containing all intial setup functions for generating cards
@@ -155,6 +158,8 @@ function init() {
 
   /* Hide the the new fortune button and add event listener to it */
   resetButton.removeEventListener("click", init);
+   
+ 
   resetButton.style.opacity = 0.5;
 }
 
@@ -562,4 +567,10 @@ function centerSelectedCard() {
       }
     }
   }
+}
+
+function playSparkle() {
+  let sparkle = document.getElementById("sparkle");
+  sparkle.volume = 0.5
+  sparkle.play();
 }
