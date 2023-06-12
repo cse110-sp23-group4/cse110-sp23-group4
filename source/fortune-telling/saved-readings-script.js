@@ -2,11 +2,12 @@
  * @file The saved-readings-script.js is a script that contains almost all of the
  * functionality needed to store, retrieve, and delete a fortune from localStorage.
  * It also contains functions to display fortunes on the page itself.
- * - Last Modified: 06/06/2023
+ * - Last Modified: 06/11/2023
  * @author Nakul Nandhakumar
  * @author Ezgi Bayraktaroglu
  * @author Joshua Tan
  * @author Abijit Jayachandran
+ * @author Samuel Au
  */
 
 /**
@@ -53,13 +54,35 @@ function init() {
 	 * Display fortunes when page loads
 	 */
 	displayFortunes();
+
+	/* Play sound when pressing buttons */
+	playClickSound();
 }
+
+/**
+ * Adds event listeners to all buttons to play click sound effect.
+ */
+function playClickSound() {
+	let buttons = document.getElementsByTagName("button");
+	for (let button of buttons) {
+	  button.addEventListener('click', () => {
+		const sound = document.getElementById("click");
+		sound.play();
+	  });
+	}
+  }
 
 /**
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	location.href = "menu.html";
+	const sound = document.getElementById("click");
+	sound.addEventListener('ended', function (){
+		window.location.href = "menu.html";
+	});
+	// setTimeout(function() {
+	// 	window.location.href = "menu.html";
+	// 	}, 400);
 }
 
 /**
@@ -183,6 +206,7 @@ function displayFortunes() {
 		deleteButton.style.borderRadius = '5px';
 		// Red border on mouse over
 		deleteButton.addEventListener('mouseover', () => {
+
 			deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
 		});
 		// No border color when not hovering
@@ -194,11 +218,25 @@ function displayFortunes() {
 			deleteFortune(i);
 			displayFortunes();
 		});
-
+		// adds image based off category
+		console.log(fortuneCategory.innerHTML);
+		let fortuneImg = document.createElement('img');
+		if(fortuneCategory.innerHTML === 'Love'){
+			fortuneImg.src = `assets/card-page/love_back.png`;
+		}
+		else if(fortuneCategory.innerHTML === 'School'){
+			fortuneImg.src = `assets/card-page/school_back.png`;
+		}
+		else if(fortuneCategory.innerHTML === 'Life'){
+			fortuneImg.src = `assets/card-page/life_back.png`;
+		}
+		fortuneImg.style.display = 'block';
+		fortuneImg.style.margin = '0 auto';
 		// adds elements with fortune text, category, and date to the fortune div wrapper
 		fortuneInList.appendChild(fortuneText);
 		fortuneInList.appendChild(fortuneCategory);
 		fortuneInList.appendChild(fortuneDate);
+		fortuneInList.appendChild(fortuneImg);
 		fortuneInList.appendChild(deleteButton);
 		// adds fortune wrapper to history div wrapper
 		history.appendChild(fortuneInList);

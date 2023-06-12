@@ -76,7 +76,7 @@ button:hover {
   width: 80%;
   min-height: 200px;
   height: 200px;
-  overflow: scroll;
+  overflow: auto;
   align-items: center;
   justify-content: center;
 }

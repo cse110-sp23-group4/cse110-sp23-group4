@@ -1,18 +1,15 @@
 /**
- * @file JavaScript Code for card.html - Last Modified: 06/04/2023
+ * @file JavaScript Code for card.html - Last Modified: 06/11/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
  * @author Nakul Nandhakumar
  * @author Joshua Tan
  * @author Khanh Le
+ * @author Samuel Au
  */
-
-
 
 /* TODO: The scope of these variables may be adjusted later */
 import { addFortune } from "./saved-readings-script.js";
-
-
 
 /**
  * A reference to the fortuneText when prediction occurs.
@@ -20,15 +17,11 @@ import { addFortune } from "./saved-readings-script.js";
  */
 let fortuneText = "";
 
-
-
 /**
  * A reference to the number of cards the user wants to select
  * @type {number}
  */
 let selectCount;
-
-
 
 /**
  * A reference to the output interal for typing the fortune to the screen
@@ -36,15 +29,11 @@ let selectCount;
  */
 let typeOutputInterval;
 
-
-
 /**
  * Set the number of cards to appear to be 6
  * @type {number}
  */
 let cardCount = 6;
-
-
 
 /**
  * A reference to a button to get the tarot card predictions
@@ -52,16 +41,11 @@ let cardCount = 6;
  */
 const predictButton = document.getElementById('getTarot');
 
-
-
 /**
  * A reference to a button to save the fortune to localStorage
  * @type {HTMLElement | null}
  */
 const saveButton = document.getElementById('saveFortune');
-
-
-
 
 /**
  * A reference to a button to save the fortune to localStorage
@@ -69,15 +53,11 @@ const saveButton = document.getElementById('saveFortune');
  */
 const saveReadingsButton = document.getElementById('savedReadingsPage');
 
-
-
 /**
  * Array containing the id strings of all selected cards
  * @type {string[]}
  */
 let selectBuffer = [];
-
-
 
 /**
  * A reference to back button HTMlElement on card.html
@@ -85,15 +65,11 @@ let selectBuffer = [];
  */
 const returnToMenuButton = document.getElementById('returnMenu');
 
-
-
 /**
  * A reference to reset button to get new fortune
  * @type {HTMLElement | null}
  */
 const resetButton = document.getElementById('reset');
-
-
 
 /**
  * A reference to all card images
@@ -101,11 +77,7 @@ const resetButton = document.getElementById('reset');
  */
 const tarotCards = document.getElementsByClassName('card');
 
-
-
 window.addEventListener('load', init);
-
-
 
 /**
  * Function containing all intial setup functions for generating cards
@@ -119,7 +91,13 @@ function init() {
 
     // Remove select class so that old card does not get centered
 		tarotCards[i].classList.remove("select");
+
+    //Remove Box Shadow Styling if there is any
+    tarotCards[i].style.boxShadow = null;
   }
+
+  // Clear Selected Card Buffer
+  selectBuffer = [];
 
   // Reset all the cards to be facing down again
   for (let i = 0; i < tarotCards.length; i++) {
@@ -138,8 +116,24 @@ function init() {
       selectCount = 1;
       break;
   }
+  /* Set the backs of the cards based off the category*/
+  for (let i = 0; i < tarotCards.length; i++) {
+    if(category === 'Love'){
+      tarotCards[i].src = `assets/card-page/love_back.png`;
+    }
+    else if(category === 'School'){
+      tarotCards[i].src = `assets/card-page/school_back.png`;
+    }
+    else if(category === 'Life'){
+      tarotCards[i].src = `assets/card-page/life_back.png`;
+    }
+    
+  }
 
   typePrediction(`Please Select ${selectCount} Card.`);
+
+  /* Play sound when pressing buttons */
+   playClickSound();
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -164,25 +158,40 @@ function init() {
   resetButton.style.opacity = 0.5;
 }
 
-
+/**
+ * Function that plays sound when buttons are clicked
+ */
+function playClickSound() {
+  let buttons = document.getElementsByTagName("button");
+  for (let button of buttons) {
+    button.addEventListener('click', () => {
+      const sound = document.getElementById("click");
+      sound.play();
+    });
+  }
+}
 
 /**
- * Function that changes to page back to the main menu
+ * Function that changes to page back to the main menu (only after click sound 
+ * effect has finished)
  */
 function returnToMenu() {
-  window.location.href = "menu.html";
+  const sound = document.getElementById("click");
+  sound.addEventListener('ended', function() {
+    window.location.href = "menu.html";
+  });
 }
-
-
 
 /**
- * Function that changes the page to the save readings page
+ * Function that changes the page to the save readings page (only after click 
+ * sound effect has finished)
  */
 function goToSavedReadings() {
-  window.location.href = "saved.html";
+  const sound = document.getElementById("click");
+  sound.addEventListener('ended', function() {
+    window.location.href = "saved.html";
+  });
 }
-
-
 
 /**
  * A function used for an event listener in order to generate the prediction
@@ -195,8 +204,21 @@ async function generatePrediction() {
    */
   const predictOut = document.getElementById('output');
 
-  // Empty the previous fortune text
-  fortuneText = "";
+  // Reset all the cards to be facing down again
+  let category = JSON.parse(localStorage.getItem("category"));
+  for (let i = 0; i < tarotCards.length; i++) {
+    if(category === 'Love'){
+      tarotCards[i].src = `assets/card-page/love_back.png`;
+    }
+    else if(category === 'School'){
+      tarotCards[i].src = `assets/card-page/school_back.png`;
+    }
+    else if(category === 'Life'){
+      tarotCards[i].src = `assets/card-page/life_back.png`;
+    }
+    
+  }
+
 
   /* Verify items are selected */
   if (selectBuffer && selectBuffer.length === selectCount) {

@@ -1,7 +1,13 @@
 /**
- * @file JavaScript Code for menu.html
- * @author FIGURE OUT AUTHORS AND WRITE!!
+ * @file Script that controls the functionality of the menu page - Last Modified 6/11/2023
+ * @author Samuel Au
+ * @author Nakul Nandhakumar
+ * @author Abijit Jayachandran
+ * @author Joshua Tan
+ * @author Helen Lin
+ * @author Christian Lee
  */
+
 
 /**
  * A reference to the div containing all the category Buttons on menu.html
@@ -39,7 +45,22 @@ const savedReadingsButton = document.getElementById('savedReadings');
 function setCardLink(i) {
   /* Set data in local storage based on clicked category */
   localStorage.setItem('category', JSON.stringify(titles[i]));
-  window.location.href = 'card.html';
+  setTimeout(function() {
+    window.location.href = "card.html";
+  }, 400);
+}
+
+/**
+ * Function that plays sound when buttons are clicked
+ */
+function playClickSound() {
+  let buttons = document.getElementsByTagName("button");
+  for (let button of buttons) {
+    button.addEventListener('click', () => {
+      const sound = document.getElementById("click");
+      sound.play();
+    });
+  }
 }
 
 /**
@@ -47,7 +68,10 @@ function setCardLink(i) {
  * necessary actions when the landing page is clicked on by the user
  */
 function setLandingLink() {
-  window.location.href = 'landing.html';
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
+    window.location.href = "landing.html";
+  });
 }
 
 /**
@@ -55,7 +79,10 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  window.location.href = 'saved.html';
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
+    window.location.href = "saved.html";
+  });
 }
 
 /**
@@ -75,7 +102,10 @@ function createCategoryButtons() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', createCategoryButtons);
+window.addEventListener('DOMContentLoaded', () =>{
+  createCategoryButtons();
+  playClickSound(); 
+});
 
 /*
  * Adds an onClick listner to the reference to the back button html element on
@@ -90,4 +120,3 @@ backButton.addEventListener('click', setLandingLink);
  * to the Saved Readings Page (saved-readings.html)
  */
 savedReadingsButton.addEventListener('click', setSavedReadingsLink);
-

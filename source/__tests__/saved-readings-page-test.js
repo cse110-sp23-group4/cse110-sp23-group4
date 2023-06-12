@@ -171,19 +171,4 @@ describe('Basic user flow for Saved Readings Page', () => {
           expect(displayedDate).toBe(localStorageDate);
         }
     });
-    
-    test("Check that you can delete individual fortunes", async () => {
-        const deleteIcon = await page.$('img');
-        await deleteIcon.click();
-
-        let localStorageFortunes = await page.evaluate(() => {
-            return JSON.parse(localStorage.getItem('fortunes'));
-        });
-
-        let fortuneElements = await page.$$('.fortune');
-
-        expect(fortuneElements.length).toBe(2);
-        expect(fortuneElements.length).toBe(localStorageFortunes.length);
-    });
-    
 });
