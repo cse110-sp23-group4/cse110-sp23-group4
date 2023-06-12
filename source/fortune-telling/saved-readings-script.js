@@ -242,7 +242,7 @@ function displayFortunes() {
 		fortuneDetails.appendChild(fortuneDate);
 		fortuneDetails.appendChild(deleteButton);
 		
-		fortuneInList.appendChild(fortuneDetails)
+		fortuneInList.appendChild(fortuneDetails);
 		fortuneInList.appendChild(fortuneText);
 		history.appendChild(fortuneInList);
 	}
