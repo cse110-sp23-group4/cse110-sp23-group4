@@ -16,13 +16,27 @@ html {
     -o-background-size: cover;
     background-size: cover;
     background-color: rgb(2, 31, 2); /*change background color to match hut picture */
-
-    /* position transitions take 1 second and size transitions take 2 seconds and are linear */
-    -webkit-transition: background-position 1s, background-size 2s linear;
-    -moz-transition: background-position 1s, background-size 2s linear;
-    -o-transition: background-position 1s, background-size 2s linear;
-    transition: background-position 1s, background-size 2s linear; 
 }
+
+/* Animation for entering the hut */
+@keyframes zoom {
+    from {
+        /* Switch from cover to 100% 100%
+           because cover doesn't work with animation */
+        -webkit-background-size:  100% 100%;
+        -moz-background-size:  100% 100%;
+        -o-background-size:  100% 100%;
+        background-size: 100% 100%;
+    }
+    to {
+        -webkit-background-size: 800% 1200%;
+        -moz-background-size: 800% 1200%;
+        -o-background-size: 800% 1200%;
+        background-size: 800% 1200%;
+        background-position: 50% 80%;
+    }
+  }
+
   
 /* Styles the header */
 header {

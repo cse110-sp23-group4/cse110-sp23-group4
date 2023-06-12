@@ -3,7 +3,11 @@
  * @author Samuel Au
  * @author Nakul Nandhakumar
  * @author Abijit Jayachandran
+ * @author Joshua Tan
+ * @author Helen Lin
+ * @author Christian Lee
  */
+
 
 /**
  * A reference to the div containing all the category Buttons on menu.html

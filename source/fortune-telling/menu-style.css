@@ -47,6 +47,20 @@ button:hover {
 .headerElement {
   text-align: center;
 }
+/* Styles the header box*/
+.header p{
+  color: white;
+  font-family: "playfairDisplay", serif; 
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: transparent;
+  background-color: rgb(101 2 151 / 50%);
+  border-radius: 30px;
+}
 
 /* Styles the back button in header */
 #back {
