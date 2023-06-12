@@ -74,8 +74,8 @@ enterButton.addEventListener('click', () => {
 // /**
 //   * Reduce background music volume
 //   */
-function startBackgroundMusic() {
-   let backgroundMusic = document.getElementById("music");
-   backgroundMusic.volume = 0.1;
-   backgroundMusic.play(); 
-}
+// function startBackgroundMusic() {
+//    let backgroundMusic = document.getElementById("music");
+//    backgroundMusic.volume = 0.1;
+//    backgroundMusic.play(); 
+// }
