@@ -155,7 +155,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
     expect(outputText).toBe(newText);
   }, 30000); 
-
+  
   test('Check that save fortune button saves fortune', async () => {
     let fortuneBefore = await page.evaluate(() => JSON.parse(localStorage.getItem('fortunes')));
     await page.click('#saveFortune');
@@ -169,16 +169,21 @@ describe('Basic user flow for Fortune Generation Page', () => {
   });
 
   test('Check that menu page button returns to menu', async () => {
-    await page.click('#returnMenu');
-    await page.waitForNavigation();
+    const [response] = await Promise.all([
+      page.waitForNavigation(), // The promise resolves after navigation has finished
+      page.click('#returnMenu'), // Clicking the link will indirectly cause a navigation
+    ]);
     const url = await page.url();
+    console.log(url);
     expect(url).toBe('http://localhost:8000/source/fortune-telling/menu.html');
     await page.goBack();
   });
 
   test('Check that saved reading button goes to saved reading page', async () => {
-    await page.click('#savedReadingsPage');
-    await page.waitForNavigation();
+    const [response] = await Promise.all([
+      page.waitForNavigation(), // The promise resolves after navigation has finished
+      page.click('#savedReadingsPage'), // Clicking the link will indirectly cause a navigation
+    ]);
     const url = await page.url();
     expect(url).toBe('http://localhost:8000/source/fortune-telling/saved.html');
     await page.goBack();

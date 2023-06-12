@@ -39,8 +39,10 @@ describe('Basic user flow for Landing Page', () => {
         console.log("Before button click...");
 
         const button = await page.$('button');
-        await button.click();
-        await page.waitForNavigation();
+        const [response] = await Promise.all([
+            page.waitForNavigation(), // The promise resolves after navigation has finished
+            button.click(), // Clicking the link will indirectly cause a navigation
+          ]);
 
         const page2URL = await page.url();
         const page2Title = await page.title();
