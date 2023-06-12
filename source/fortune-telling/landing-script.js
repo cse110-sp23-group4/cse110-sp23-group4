@@ -55,12 +55,13 @@ function enterHut() {
 /* Add the listener to the landing page button */
 enterButton.addEventListener('click', enterHut);
 
-/**
- * Function which detects the first click on the page
- * and automatically begins playing the background track
- */
+
+/* Add event listener to start music when DOMContentLoaded */
 document.addEventListener("DOMContentLoaded", startBackgroundMusic());
 
+/**
+ * Function which begins playing the background track
+ */
 function startBackgroundMusic() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
