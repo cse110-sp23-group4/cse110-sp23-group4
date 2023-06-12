@@ -31,7 +31,7 @@ enterButton = document.querySelector('button');
 function playWoosh() {
   let woosh = document.getElementById("woosh");
   woosh.volume = 0.3;
-  woosh.play();
+  woosh.play()
 }
 
 /**
@@ -65,7 +65,7 @@ function enterHut() {
 /* Add the listener to the landing page button */
 enterButton.addEventListener('click', () => {
   setTimeout(enterHut, 750);
-  playWoosh();
+  setTimeout(playWoosh, 200);
 });
 
 
