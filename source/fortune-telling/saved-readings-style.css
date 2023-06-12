@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+
 .historyWrapper {
   display: flex;
   flex-direction: column;
@@ -20,10 +22,12 @@
 }
 
 #title {
-  color: white;
+  font-family: 'Macondo', cursive;
+  font-size: 70px;
   font-weight: bold;
-  font-size: 40px;
-  font-family: 'Arial';
+  color: whitesmoke;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px purple;
 }
 
 .backButton {
@@ -39,8 +43,6 @@
   color: white;
   font-size: 20px;
   text-shadow: 2px 2px 3px #ad08c7;
-  left: 20px;
-  top: 60px;
 }
 
 button:hover {
@@ -77,4 +79,14 @@ h1, .fortuneText, .fortuneCategory, .fortuneDate {
   color: white;
   font-size: 20px;
   text-shadow: 2px 2px 3px #ad08c7;
+}
+
+/* || Header Section */
+/* Styles the header */
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }

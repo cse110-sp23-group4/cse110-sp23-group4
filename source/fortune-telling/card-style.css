@@ -1,10 +1,16 @@
 /**
- * @file CSS Code for card.html - Last Modified: 06/05/2023
+ * @file CSS Code for card.html - Last Modified: 06/11/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
+ * @author Samuel Au
  */
 
 /* Make entire page's background black with image */
+
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+
 html {
   background: url(assets/card-page/backdrop.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -35,6 +41,7 @@ html {
 }
 
 .buttons {
+  font-family: 'Domine', serif;
   justify-content: center;
   gap: 40px;
   padding: 10px 0;
@@ -70,9 +77,10 @@ button:hover {
   margin: 20px auto;
   text-align: center;
   text-shadow: 1px 1px 2px #ad08c7;
-  font-family: 'Tangerine';
-  font-size: 50px;
+  font-family: 'Hubballi', cursive;
+  font-size: 40px;
   color: white;
+  font-weight: bold;
   width: 80%;
   min-height: 200px;
   height: 200px;
