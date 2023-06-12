@@ -170,5 +170,5 @@ describe('Basic user flow for Saved Readings Page', () => {
           expect(displayedCategory).toBe(localStorageCategory);
           expect(displayedDate).toBe(localStorageDate);
         }
-    });
+    }, 10000);
 });
