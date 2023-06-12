@@ -96,7 +96,7 @@ function createCategoryButtons() {
 
 window.addEventListener('DOMContentLoaded', () =>{
   createCategoryButtons();
-  setTimeout(playClickSound, 100);
+  playClickSound();
 });
 
 /*
