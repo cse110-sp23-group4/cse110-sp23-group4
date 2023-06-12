@@ -571,6 +571,6 @@ function centerSelectedCard() {
 
 function playSparkle() {
   let sparkle = document.getElementById("sparkle");
-  sparkle.volume = 0.5
+  sparkle.volume = 0.5;
   sparkle.play();
 }
