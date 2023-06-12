@@ -53,13 +53,13 @@ function enterHut() {
 /* Add the listener to the landing page button */
 enterButton.addEventListener('click', enterHut);
 
-// /* Add event listener to start music when DOMContentLoaded */
-document.addEventListener("DOMContentLoaded", startBackgroundMusic());
+/* Reduce music volume */
+document.addEventListener("DOMContentLoaded", reduceMusicVol());
 
 /**
-  * Reduce background music volume
+  * Reduces background music volume to 0.1
   */
-function startBackgroundMusic() {
+function reduceMusicVol() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
   //backgroundMusic.play(); 

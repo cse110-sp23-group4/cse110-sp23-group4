@@ -85,8 +85,9 @@ window.addEventListener('DOMContentLoaded', createCategoryButtons);
 backButton.addEventListener('click', setLandingLink);
 
 /*
- * Adds an onClick listner to the reference to the Saved Readings button html
+ * Adds an onClick listener to the reference to the Saved Readings button html
  * element on menu.html so that when clicked the user gets navigated
  * to the Saved Readings Page (saved-readings.html)
  */
 savedReadingsButton.addEventListener('click', setSavedReadingsLink);
+
