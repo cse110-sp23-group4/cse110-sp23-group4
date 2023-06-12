@@ -40,7 +40,6 @@ enterButton = document.querySelector('button');
  * for the animation to trigger.
  */
 function toMenuPage() {
-    backgroundMusic.stop();
     window.location.href = "menu.html";
 }
 
