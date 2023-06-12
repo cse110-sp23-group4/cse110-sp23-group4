@@ -1,17 +1,11 @@
+/* Import fonts for landing page*/
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
 /* Reset default browser styles */
 body, h1, p {
     margin: 0;
     padding: 0;
-}
-
-/* Download all fonts needed for the landing page */ 
-@font-face {
-    font-family: "abrilFatface";
-    src: url("assets/fonts/AbrilFatface-Regular.ttf");
-}
-@font-face {
-    font-family: "playfairDisplay";
-    src: url("assets/fonts/PlayfairDisplaySC-Regular.ttf");
 }
 
 /* Adds background picture of hut and change background colour to match*/ 
@@ -56,16 +50,12 @@ header {
 
 /* Styles the heading/title text*/
 h1 {
-    border: 2px solid red; 
-    border: transparent; 
-    margin: 0; 
-    padding: 0; 
-    font-family: "abrilFatface", serif;
-    font-size: 60px;
-    font-weight: bold;
-    color: white; /*rgb(2, 29, 7);*/
-    /*color: #FFFFFF;*/
-    margin-bottom: 10px;
+  font-family: 'Macondo', cursive;
+  font-size: 70px;
+  font-weight: bold;
+  color: whitesmoke;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px purple;
 }
 
 /* Styles the frame around the introduction text*/
@@ -74,8 +64,8 @@ h1 {
     border: 2px solid red; 
     border-radius: 50px;
     border: 0;
-
-    margin: 0 auto; 
+    
+    margin: 50px auto; 
     padding: 0;
     top: 100%; 
 
@@ -89,17 +79,16 @@ h1 {
 /* Styles the text inside the frame */
 .storyFrame p {
     color: white;
-    font-family: "playfairDisplay", serif; 
+    font-family: 'Hubballi', cursive;
+    font-weight: bold;
     text-align: center;
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.5;
     margin-top: 10px; 
     margin-bottom: 10px;
     padding: 20px;
-    background-color: transparent;
-    background-color: rgba(6, 43, 6, 0.5);
+    background-color: rgba(3, 29, 3, 0.8);
     border-radius: 30px;
-    /*background-color: #1B4721;*/
 }
 
 .questionFrame {
@@ -108,24 +97,16 @@ h1 {
   margin: 0 auto;
 }
 
-/*Styles the question*/ 
-/* TODO: We may not need the question (design choice)*/
-/*#question {
-    font-size: 20pt; 
-    margin-bottom: 10px;
-    background-color: black ;
-    text-align: center;
-}*/
-
 /* Styles the enter button*/
 button { 
-    font-family: "playfairDisplay", serif;
+    font-family: 'Hubballi', cursive;
+    font-weight: bold;
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
     /*background-color: #8B4513;*/
     background-color: rgba(139, 69, 19, 0.5);
-    font-size: 30pt;
+    font-size: 60px;
     color: #FFFFFF;
     text-decoration: none;
     border: none;
