@@ -59,8 +59,10 @@ enterButton.addEventListener('click', enterHut);
  * Function which detects the first click on the page
  * and automatically begins playing the background track
  */
-document.addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", startBackgroundMusic());
+
+function startBackgroundMusic() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
   backgroundMusic.play();
-});
+}
