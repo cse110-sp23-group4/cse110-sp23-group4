@@ -1,6 +1,8 @@
 /**
- * @file JavaScript Code for menu.html - Last Modified 6/11/2023
+ * @file Script that controls the functionality of the menu page - Last Modified 6/11/2023
  * @author Samuel Au
+ * @author Nakul Nandhakumar
+ * @author Abijit Jayachandran
  */
 
 /**
@@ -96,7 +98,7 @@ function createCategoryButtons() {
 
 window.addEventListener('DOMContentLoaded', () =>{
   createCategoryButtons();
-  setTimeout(playClickSound, 100);
+  playClickSound(); 
 });
 
 /*
