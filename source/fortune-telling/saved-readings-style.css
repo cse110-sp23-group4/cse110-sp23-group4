@@ -6,6 +6,15 @@
   flex-direction: column;
 }
 
+html {
+  background: url(assets/saved-readings-page/saved-readings-page-background.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+}
+
 .fortune {
   opacity: 80%;
   background-color: white;
@@ -49,11 +58,6 @@
 
 button:hover {
   box-shadow: 0 0 15px 10px #ad08c7;
-}
-
-body {
-  background: url(assets/saved-readings-page/saved-readings-page-background.jpeg) no-repeat center center fixed; 
-  background-color: lightgray;
 }
 
 h1, .fortuneText, .fortuneCategory, .fortuneDate {
