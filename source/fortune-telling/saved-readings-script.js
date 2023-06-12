@@ -89,7 +89,7 @@ function backToMenu() {
  * This function clears the localStorage of (only) fortunes and
  * calls the displayFortunes function to update the display to
  * be cleared of fortunes. This function is called by the 
-   * event listener added to tempClearButton. This is meant to be a 
+ * event listener added to tempClearButton. This is meant to be a 
  * temporary fuction used help test, but it could be useful for
  * the actual page.
  */
@@ -140,7 +140,7 @@ export function addFortune(fortuneText, category, date) {
 }
 
 /**
- * This function retrieves fortunes from localStorage and returns an array
+ * Retrieves fortunes from localStorage and returns an array
  * of fortunes. If nothing in local storage, it returns an empty array.
  * @param {string} - the text of the fortune
  * @param {string} - the category of the fortune
@@ -161,7 +161,7 @@ function getFortunes() {
 }
 
 /**
- * This function uses getFortunes and displays the fortunes it
+ * Uses getFortunes and displays the fortunes it
  * gets on the page with a div element for each fortune. Every
  * time this function is called, it clears everything in the 
  * element refered to by history and re-adds each fortune to the
@@ -206,11 +206,12 @@ function displayFortunes() {
 		deleteButton.style.borderRadius = '5px';
 		// Red border on mouse over
 		deleteButton.addEventListener('mouseover', () => {
-		deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
+
+			deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
 		});
 		// No border color when not hovering
 		deleteButton.addEventListener('mouseout', () => {
-		deleteButton.style.boxShadow = '';
+			deleteButton.style.boxShadow = '';
 		});
 		// Delete fortune on click
 		deleteButton.addEventListener('click', () => {
