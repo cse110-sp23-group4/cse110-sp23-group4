@@ -64,9 +64,13 @@ function playClickSound() {
  * necessary actions when the landing page is clicked on by the user
  */
 function setLandingLink() {
-  setTimeout(function() {
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
     window.location.href = "landing.html";
-  }, 400);
+  });
+  // setTimeout(function() {
+  //   window.location.href = "landing.html";
+  // }, 500);
 }
 
 /**
@@ -74,9 +78,13 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  setTimeout(function() {
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
     window.location.href = "saved.html";
-  }, 400);
+  });
+  // setTimeout(function() {
+  //   window.location.href = "saved.html";
+  // }, 400);
 }
 
 /**

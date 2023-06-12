@@ -60,7 +60,7 @@ function init() {
 }
 
 /**
- * Function that plays sound when buttons are clicked
+ * Adds event listeners to all buttons to play click sound effect.
  */
 function playClickSound() {
 	let buttons = document.getElementsByTagName("button");
@@ -76,9 +76,13 @@ function playClickSound() {
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	setTimeout(function() {
+	const sound = document.getElementById("click");
+	sound.addEventListener('ended', function (){
 		window.location.href = "menu.html";
-		}, 400);
+	});
+	// setTimeout(function() {
+	// 	window.location.href = "menu.html";
+	// 	}, 400);
 }
 
 /**
