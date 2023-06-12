@@ -31,7 +31,7 @@ enterButton = document.querySelector('button');
 function playWoosh() {
   let woosh = document.getElementById("woosh");
   woosh.volume = 0.3;
-  woosh.play()
+  woosh.play();
 }
 
 /**
@@ -40,9 +40,7 @@ function playWoosh() {
  * for the animation to trigger.
  */
 function toMenuPage() {
-  setTimeout(function() {
     window.location.href = "menu.html";
-  }, 750);
 }
 
 /**
@@ -52,7 +50,7 @@ function toMenuPage() {
  */
 function enterHut() {
     /* Go to menu page after 0.75 seconds upon clicking the button */
-    toMenuPage();
+    setTimeout(toMenuPage, 500);
     /* Clear all elements from page */
     pageContents.innerHTML = '';
 
@@ -64,8 +62,8 @@ function enterHut() {
 
 /* Add the listener to the landing page button */
 enterButton.addEventListener('click', () => {
-  setTimeout(enterHut, 750);
-  setTimeout(playWoosh, 200);
+  setTimeout(playWoosh, 500);
+  setTimeout(enterHut, 1000);
 });
 
 
