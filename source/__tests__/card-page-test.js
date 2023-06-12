@@ -135,7 +135,6 @@ describe('Basic user flow for Fortune Generation Page', () => {
     const text = await page.$eval('#output', (text) => {
       return text.innerText;
     });
-    console.log(text);
     let badResponses = ['', 'Please Select 1 Card.'];
     expect(badResponses).not.toContain(text);
   }, 30000);
