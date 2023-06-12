@@ -106,8 +106,6 @@ describe('Basic user flow for Menu Page', () => {
                 page.waitForNavigation(), // The promise resolves after navigation has finished
                 newButtons[i].click(), // Clicking the link will indirectly cause a navigation
             ]);
-            //await newButtons[i].click();
-            //await page.waitForNavigation();
 
             const page2URL = await page.url();
             const page2Title = await page.title();
