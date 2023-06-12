@@ -1,6 +1,8 @@
 /**
  * @file JavaScript Code for menu.html
- * @author FIGURE OUT AUTHORS AND WRITE!!
+ * @author Joshua Tan
+ * @author Helen Lin
+ * @author Christian Lee
  */
 
 /**
