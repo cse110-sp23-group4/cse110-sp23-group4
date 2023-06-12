@@ -176,10 +176,10 @@ function init() {
  * effect has finished)
  */
 function returnToMenu() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "menu.html";
-  });
+  //});
 }
 
 /**
@@ -187,10 +187,10 @@ function returnToMenu() {
  * sound effect has finished)
  */
 function goToSavedReadings() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "saved.html";
-  });
+  //});
 }
 
 /**
