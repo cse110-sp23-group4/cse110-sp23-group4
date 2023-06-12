@@ -68,9 +68,6 @@ function setLandingLink() {
   sound.addEventListener("ended", function() {
     window.location.href = "landing.html";
   });
-  // setTimeout(function() {
-  //   window.location.href = "landing.html";
-  // }, 500);
 }
 
 /**
@@ -82,9 +79,6 @@ function setSavedReadingsLink() {
   sound.addEventListener("ended", function() {
     window.location.href = "saved.html";
   });
-  // setTimeout(function() {
-  //   window.location.href = "saved.html";
-  // }, 400);
 }
 
 /**
