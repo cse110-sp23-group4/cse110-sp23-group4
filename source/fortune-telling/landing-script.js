@@ -40,6 +40,7 @@ enterButton = document.querySelector('button');
  * for the animation to trigger.
  */
 function toMenuPage() {
+    backgroundMusic.stop();
     window.location.href = "menu.html";
 }
 
@@ -70,13 +71,13 @@ enterButton.addEventListener('click', enterHut);
 
 
 // /* Add event listener to start music when DOMContentLoaded */
-// document.addEventListener("DOMContentLoaded", startBackgroundMusic());
+document.addEventListener("DOMContentLoaded", startBackgroundMusic());
 
-// /**
-//  * Reduce background music volume
-//  */
-// function startBackgroundMusic() {
-//   let backgroundMusic = document.getElementById("music");
-//   backgroundMusic.volume = 0.1;
-//   backgroundMusic.play(); 
-// }
+/**
+  * Reduce background music volume
+  */
+function startBackgroundMusic() {
+  let backgroundMusic = document.getElementById("music");
+  backgroundMusic.volume = 0.1;
+  backgroundMusic.play(); 
+}
