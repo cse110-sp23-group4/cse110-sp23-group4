@@ -171,6 +171,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
   test('Check that menu page button returns to menu', async () => {
     await page.click('#returnMenu');
+    await page.waitForNavigation();
     const url = await page.url();
     expect(url).toBe('http://localhost:8000/source/fortune-telling/menu.html');
     await page.goBack();
@@ -178,6 +179,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
 
   test('Check that saved reading button goes to saved reading page', async () => {
     await page.click('#savedReadingsPage');
+    await page.waitForNavigation();
     const url = await page.url();
     expect(url).toBe('http://localhost:8000/source/fortune-telling/saved.html');
     await page.goBack();

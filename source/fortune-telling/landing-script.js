@@ -4,6 +4,7 @@
  * @author Nakul Nandhakumar
  * @author Joshua Tan
  * @author Abijit Jayachandran
+ * @author Samuel Au
  * @author Helen Lin
  */
 
@@ -26,12 +27,21 @@ pageContents = document.querySelector('body');
 enterButton = document.querySelector('button');
 
 /**
+ * A function to get the button for playing the woosh sound
+ */
+// function playWoosh() {
+//   let woosh = document.getElementById("woosh");
+//   woosh.volume = 0.3;
+//   woosh.play();
+// }
+
+/**
  * This function sends the user to the menu page where they can select what type
  * of fortune they would like to receive and is called after a timeout to allow
  * for the animation to trigger.
  */
 function toMenuPage() {
-  window.location.href='menu.html';
+    window.location.href = "menu.html";
 }
 
 /**
@@ -41,8 +51,7 @@ function toMenuPage() {
  */
 function enterHut() {
     /* Go to menu page after 0.75 seconds upon clicking the button */
-    setTimeout(toMenuPage, 750);
-    
+    setTimeout(toMenuPage, 500);
     /* Clear all elements from page */
     pageContents.innerHTML = '';
 
@@ -50,5 +59,23 @@ function enterHut() {
     hutBackground.style.animation= "zoom 2s forwards";
 }
 
-/* Add the listener to the landing page button */
 enterButton.addEventListener('click', enterHut);
+
+/* Add the listener to the landing page button */
+// enterButton.addEventListener('click', () => {
+//   setTimeout(playWoosh, 500);
+//   setTimeout(enterHut, 1000);
+// });
+
+
+// /* Add event listener to start music when DOMContentLoaded */
+// document.addEventListener("DOMContentLoaded", startBackgroundMusic());
+
+// /**
+//   * Reduce background music volume
+//   */
+// function startBackgroundMusic() {
+//   let backgroundMusic = document.getElementById("music");
+//   backgroundMusic.volume = 0.1;
+//   backgroundMusic.play(); 
+// }
