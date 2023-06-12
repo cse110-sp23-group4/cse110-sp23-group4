@@ -204,6 +204,7 @@ function displayFortunes() {
 		let deleteButton = document.createElement('img');
 		deleteButton.src = "assets/saved-readings-page/trash.png";
 		deleteButton.style.borderRadius = '5px';
+		deleteButton.style.height = "100%";
 		// Red border on mouse over
 		deleteButton.addEventListener('mouseover', () => {
 
@@ -231,14 +232,18 @@ function displayFortunes() {
 			fortuneImg.src = `assets/card-page/life_back.png`;
 		}
 		fortuneImg.style.display = 'block';
-		fortuneImg.style.margin = '0 auto';
+
 		// adds elements with fortune text, category, and date to the fortune div wrapper
+
+		let fortuneDetails = document.createElement("div");
+		fortuneDetails.classList.add("fortuneDetails");
+		fortuneDetails.appendChild(fortuneImg);
+		fortuneDetails.appendChild(fortuneCategory);
+		fortuneDetails.appendChild(fortuneDate);
+		fortuneDetails.appendChild(deleteButton);
+		
+		fortuneInList.appendChild(fortuneDetails)
 		fortuneInList.appendChild(fortuneText);
-		fortuneInList.appendChild(fortuneCategory);
-		fortuneInList.appendChild(fortuneDate);
-		fortuneInList.appendChild(fortuneImg);
-		fortuneInList.appendChild(deleteButton);
-		// adds fortune wrapper to history div wrapper
 		history.appendChild(fortuneInList);
 	}
 }

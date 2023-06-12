@@ -63,7 +63,16 @@ button:hover {
 h1, .fortuneText, .fortuneCategory, .fortuneDate {
   text-align: center;
   font-family: 'Hubballi', cursive;
+}
+
+.fortuneText {
   font-size: 25px;
+}
+
+.fortuneDetails {
+  display: flex;
+  justify-content: space-between;
+  font-size: 35px;
 }
 
 .clearButton {
