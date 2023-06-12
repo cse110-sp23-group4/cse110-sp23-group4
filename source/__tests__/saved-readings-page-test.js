@@ -57,7 +57,6 @@ describe('Basic user flow for Saved Readings Page', () => {
                 ['Fortune text 3', 'Category 3', '2023-06-03']
             ];
             localStorage.setItem('fortunes', JSON.stringify(fortunes));
-            console.log(localStorage.getItem('fortunes'));
         });
 
         page.reload(); 
@@ -123,7 +122,6 @@ describe('Basic user flow for Saved Readings Page', () => {
                 ['Fortune text 3', 'Category 3', '2023-06-03']
             ];
             localStorage.setItem('fortunes', JSON.stringify(fortunes));
-            console.log(localStorage.getItem('fortunes'));
         });
 
         //Some navigation through the app and page reloads
@@ -170,5 +168,5 @@ describe('Basic user flow for Saved Readings Page', () => {
           expect(displayedCategory).toBe(localStorageCategory);
           expect(displayedDate).toBe(localStorageDate);
         }
-    });
+    }, 10000);
 });

@@ -56,30 +56,30 @@ function init() {
 	displayFortunes();
 
 	/* Play sound when pressing buttons */
-	playClickSound();
+	//playClickSound();
 }
 
 /**
  * Adds event listeners to all buttons to play click sound effect.
  */
-function playClickSound() {
-	let buttons = document.getElementsByTagName("button");
-	for (let button of buttons) {
-	  button.addEventListener('click', () => {
-		const sound = document.getElementById("click");
-		sound.play();
-	  });
-	}
-  }
+// function playClickSound() {
+// 	let buttons = document.getElementsByTagName("button");
+// 	for (let button of buttons) {
+// 	  button.addEventListener('click', () => {
+// 		const sound = document.getElementById("click");
+// 		sound.play();
+// 	  });
+// 	}
+// }
 
 /**
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	const sound = document.getElementById("click");
-	sound.addEventListener('ended', function (){
+	//const sound = document.getElementById("click");
+	//sound.addEventListener('ended', function (){
 		window.location.href = "menu.html";
-	});
+	//});
 	// setTimeout(function() {
 	// 	window.location.href = "menu.html";
 	// 	}, 400);
@@ -204,6 +204,7 @@ function displayFortunes() {
 		let deleteButton = document.createElement('img');
 		deleteButton.src = "assets/saved-readings-page/trash.png";
 		deleteButton.style.borderRadius = '5px';
+		deleteButton.style.height = "100%";
 		// Red border on mouse over
 		deleteButton.addEventListener('mouseover', () => {
 
@@ -231,14 +232,18 @@ function displayFortunes() {
 			fortuneImg.src = `assets/card-page/life_back.png`;
 		}
 		fortuneImg.style.display = 'block';
-		fortuneImg.style.margin = '0 auto';
+
 		// adds elements with fortune text, category, and date to the fortune div wrapper
+
+		let fortuneDetails = document.createElement("div");
+		fortuneDetails.classList.add("fortuneDetails");
+		fortuneDetails.appendChild(fortuneImg);
+		fortuneDetails.appendChild(fortuneCategory);
+		fortuneDetails.appendChild(fortuneDate);
+		fortuneDetails.appendChild(deleteButton);
+		
+		fortuneInList.appendChild(fortuneDetails);
 		fortuneInList.appendChild(fortuneText);
-		fortuneInList.appendChild(fortuneCategory);
-		fortuneInList.appendChild(fortuneDate);
-		fortuneInList.appendChild(fortuneImg);
-		fortuneInList.appendChild(deleteButton);
-		// adds fortune wrapper to history div wrapper
 		history.appendChild(fortuneInList);
 	}
 }

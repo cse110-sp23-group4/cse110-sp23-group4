@@ -42,8 +42,12 @@ describe('Basic user flow for Menu Page', () => {
         console.log("Checking if saved readings button takes you to the saved readings page on click...");
 
         const button = await page.$('#savedReadings');
-        await button.click();
-        await page.waitForNavigation();
+        const [response] = await Promise.all([
+            page.waitForNavigation(), // The promise resolves after navigation has finished
+            button.click(), // Clicking the link will indirectly cause a navigation
+          ]);
+        //await button.click();
+        //await page.waitForNavigation();
 
         const page2URL = await page.url();
         const page2Title = await page.title();
@@ -55,8 +59,12 @@ describe('Basic user flow for Menu Page', () => {
     test("Check if back button takes you back to landing page on click", async () => {
         console.log("Checking if back button takes you back to landing page on click...");
         const button = await page.$('#back');
-        await button.click();
-        await page.waitForNavigation();
+        const [response] = await Promise.all([
+            page.waitForNavigation(), // The promise resolves after navigation has finished
+            button.click(), // Clicking the link will indirectly cause a navigation
+        ]);
+        //await button.click();
+        //await page.waitForNavigation();
 
         const page2URL = await page.url();
         const page2Title = await page.title();
@@ -94,8 +102,10 @@ describe('Basic user flow for Menu Page', () => {
         for(let i = 0; i < numButtons; i++){
             const newButtons = await page.$$('.categoryButton');
 
-            await newButtons[i].click();
-            await page.waitForNavigation();
+            const [response] = await Promise.all([
+                page.waitForNavigation(), // The promise resolves after navigation has finished
+                newButtons[i].click(), // Clicking the link will indirectly cause a navigation
+            ]);
 
             const page2URL = await page.url();
             const page2Title = await page.title();
