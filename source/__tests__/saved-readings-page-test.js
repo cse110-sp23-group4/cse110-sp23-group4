@@ -185,4 +185,5 @@ describe('Basic user flow for Saved Readings Page', () => {
         expect(fortuneElements.length).toBe(2);
         expect(fortuneElements.length).toBe(localStorageFortunes.length);
     });
+    
 });
