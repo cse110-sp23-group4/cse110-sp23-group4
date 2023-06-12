@@ -62,5 +62,5 @@ document.addEventListener("DOMContentLoaded", startBackgroundMusic());
 function startBackgroundMusic() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
-  backgroundMusic.play(); 
+  //backgroundMusic.play(); 
 }
