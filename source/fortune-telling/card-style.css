@@ -39,9 +39,6 @@ html {
 }
 
 .buttons {
-  font-family: 'Hubballi', cursive;
-  font-weight: bold;
-  color: white;
   justify-content: center;
   gap: 40px;
   padding: 10px 0;
@@ -57,9 +54,10 @@ button {
   height: 60px;
   width: 200px;
   color: white;
-  font-size: 20px;
+  font-family: 'Hubballi', cursive;
+  font-weight: bold;
+  font-size: 25px;
   border: none;
-  text-shadow: 2px 2px 3px #ad08c7;
 }
 
 button:hover {
