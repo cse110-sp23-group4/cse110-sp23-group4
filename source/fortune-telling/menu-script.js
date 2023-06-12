@@ -53,25 +53,25 @@ function setCardLink(i) {
 /**
  * Function that plays sound when buttons are clicked
  */
-function playClickSound() {
-  let buttons = document.getElementsByTagName("button");
-  for (let button of buttons) {
-    button.addEventListener('click', () => {
-      const sound = document.getElementById("click");
-      sound.play();
-    });
-  }
-}
+// function playClickSound() {
+//   let buttons = document.getElementsByTagName("button");
+//   for (let button of buttons) {
+//     button.addEventListener('click', () => {
+//       const sound = document.getElementById("click");
+//       sound.play();
+//     });
+//   }
+// }
 
 /**
  * A function used for an event listener which is responsible for performing the
  * necessary actions when the landing page is clicked on by the user
  */
 function setLandingLink() {
-  const sound = document.getElementById("click");
-  sound.addEventListener("ended", function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener("ended", function() {
     window.location.href = "landing.html";
-  });
+  //});
 }
 
 /**
@@ -79,10 +79,10 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  const sound = document.getElementById("click");
-  sound.addEventListener("ended", function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener("ended", function() {
     window.location.href = "saved.html";
-  });
+  //});
 }
 
 /**
@@ -104,7 +104,7 @@ function createCategoryButtons() {
 
 window.addEventListener('DOMContentLoaded', () =>{
   createCategoryButtons();
-  playClickSound(); 
+  //playClickSound(); 
 });
 
 /*

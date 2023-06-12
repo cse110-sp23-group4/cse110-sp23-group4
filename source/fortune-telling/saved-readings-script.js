@@ -56,30 +56,30 @@ function init() {
 	displayFortunes();
 
 	/* Play sound when pressing buttons */
-	playClickSound();
+	//playClickSound();
 }
 
 /**
  * Adds event listeners to all buttons to play click sound effect.
  */
-function playClickSound() {
-	let buttons = document.getElementsByTagName("button");
-	for (let button of buttons) {
-	  button.addEventListener('click', () => {
-		const sound = document.getElementById("click");
-		sound.play();
-	  });
-	}
-  }
+// function playClickSound() {
+// 	let buttons = document.getElementsByTagName("button");
+// 	for (let button of buttons) {
+// 	  button.addEventListener('click', () => {
+// 		const sound = document.getElementById("click");
+// 		sound.play();
+// 	  });
+// 	}
+// }
 
 /**
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	const sound = document.getElementById("click");
-	sound.addEventListener('ended', function (){
+	//const sound = document.getElementById("click");
+	//sound.addEventListener('ended', function (){
 		window.location.href = "menu.html";
-	});
+	//});
 	// setTimeout(function() {
 	// 	window.location.href = "menu.html";
 	// 	}, 400);

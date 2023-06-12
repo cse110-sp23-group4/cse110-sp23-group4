@@ -79,7 +79,7 @@ const tarotCards = document.getElementsByClassName('card');
 
 window.addEventListener('load', () => {
   init();
-  setTimeout(playSparkle, 500);
+  //setTimeout(playSparkle, 500);
 });
 
 /**
@@ -136,7 +136,7 @@ function init() {
   typePrediction(`Please Select ${selectCount} Card.`);
 
   /* Play sound when pressing buttons */
-   playClickSound();
+   //playClickSound();
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -166,25 +166,25 @@ function init() {
 /**
  * Function that plays sound when buttons are clicked
  */
-function playClickSound() {
-  let buttons = document.getElementsByTagName("button");
-  for (let button of buttons) {
-    button.addEventListener('click', () => {
-      const sound = document.getElementById("click");
-      sound.play();
-    });
-  }
-}
+// function playClickSound() {
+//   let buttons = document.getElementsByTagName("button");
+//   for (let button of buttons) {
+//     button.addEventListener('click', () => {
+//       const sound = document.getElementById("click");
+//       sound.play();
+//     });
+//   }
+// }
 
 /**
  * Function that changes to page back to the main menu (only after click sound 
  * effect has finished)
  */
 function returnToMenu() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "menu.html";
-  });
+  //});
 }
 
 /**
@@ -192,10 +192,10 @@ function returnToMenu() {
  * sound effect has finished)
  */
 function goToSavedReadings() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "saved.html";
-  });
+  //});
 }
 
 /**
@@ -569,8 +569,8 @@ function centerSelectedCard() {
   }
 }
 
-function playSparkle() {
-  let sparkle = document.getElementById("sparkle");
-  sparkle.volume = 0.5;
-  sparkle.play();
-}
+// function playSparkle() {
+//   let sparkle = document.getElementById("sparkle");
+//   sparkle.volume = 0.5;
+//   sparkle.play();
+// }
