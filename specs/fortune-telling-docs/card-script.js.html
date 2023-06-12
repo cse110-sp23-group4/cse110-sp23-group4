@@ -105,7 +105,10 @@ const resetButton = document.getElementById('reset');
  */
 const tarotCards = document.getElementsByClassName('card');
 
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+  init();
+  //setTimeout(playSparkle, 500);
+});
 
 /**
  * Function containing all intial setup functions for generating cards
@@ -161,7 +164,7 @@ function init() {
   typePrediction(`Please Select ${selectCount} Card.`);
 
   /* Play sound when pressing buttons */
-   playClickSound();
+   //playClickSound();
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -183,31 +186,33 @@ function init() {
 
   /* Hide the the new fortune button and add event listener to it */
   resetButton.removeEventListener("click", init);
+   
+ 
   resetButton.style.opacity = 0.5;
 }
 
 /**
  * Function that plays sound when buttons are clicked
  */
-function playClickSound() {
-  let buttons = document.getElementsByTagName("button");
-  for (let button of buttons) {
-    button.addEventListener('click', () => {
-      const sound = document.getElementById("click");
-      sound.play();
-    });
-  }
-}
+// function playClickSound() {
+//   let buttons = document.getElementsByTagName("button");
+//   for (let button of buttons) {
+//     button.addEventListener('click', () => {
+//       const sound = document.getElementById("click");
+//       sound.play();
+//     });
+//   }
+// }
 
 /**
  * Function that changes to page back to the main menu (only after click sound 
  * effect has finished)
  */
 function returnToMenu() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "menu.html";
-  });
+  //});
 }
 
 /**
@@ -215,10 +220,10 @@ function returnToMenu() {
  * sound effect has finished)
  */
 function goToSavedReadings() {
-  const sound = document.getElementById("click");
-  sound.addEventListener('ended', function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener('ended', function() {
     window.location.href = "saved.html";
-  });
+  //});
 }
 
 /**
@@ -591,6 +596,12 @@ function centerSelectedCard() {
     }
   }
 }
+
+// function playSparkle() {
+//   let sparkle = document.getElementById("sparkle");
+//   sparkle.volume = 0.5;
+//   sparkle.play();
+// }
 </code></pre>
         </article>
     </section>
@@ -601,13 +612,13 @@ function centerSelectedCard() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#centerSelectedCard">centerSelectedCard</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#chooseCard">chooseCard</a></li><li><a href="global.html#clearFortunes">clearFortunes</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#dewooshCards">dewooshCards</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#fortuneText">fortuneText</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#playClickSound">playClickSound</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#resetButton">resetButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li><li><a href="global.html#typeOutputInterval">typeOutputInterval</a></li><li><a href="global.html#typePrediction">typePrediction</a></li><li><a href="global.html#wooshCards">wooshCards</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFortune">addFortune</a></li><li><a href="global.html#backButton">backButton</a></li><li><a href="global.html#backToMenu">backToMenu</a></li><li><a href="global.html#cardCount">cardCount</a></li><li><a href="global.html#categories">categories</a></li><li><a href="global.html#centerSelectedCard">centerSelectedCard</a></li><li><a href="global.html#checkDuplicate">checkDuplicate</a></li><li><a href="global.html#chooseCard">chooseCard</a></li><li><a href="global.html#clearFortunes">clearFortunes</a></li><li><a href="global.html#createCategoryButtons">createCategoryButtons</a></li><li><a href="global.html#deleteFortune">deleteFortune</a></li><li><a href="global.html#dewooshCards">dewooshCards</a></li><li><a href="global.html#displayFortunes">displayFortunes</a></li><li><a href="global.html#enterButton">enterButton</a></li><li><a href="global.html#enterHut">enterHut</a></li><li><a href="global.html#fortuneText">fortuneText</a></li><li><a href="global.html#generateNonDuplicateRandomNumbers">generateNonDuplicateRandomNumbers</a></li><li><a href="global.html#generatePrediction">generatePrediction</a></li><li><a href="global.html#getFortunes">getFortunes</a></li><li><a href="global.html#goToSavedReadings">goToSavedReadings</a></li><li><a href="global.html#hutBackground">hutBackground</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#pageContents">pageContents</a></li><li><a href="global.html#predictButton">predictButton</a></li><li><a href="global.html#resetButton">resetButton</a></li><li><a href="global.html#returnToMenu">returnToMenu</a></li><li><a href="global.html#returnToMenuButton">returnToMenuButton</a></li><li><a href="global.html#saveButton">saveButton</a></li><li><a href="global.html#saveFortune">saveFortune</a></li><li><a href="global.html#saveReadingsButton">saveReadingsButton</a></li><li><a href="global.html#savedReadingsButton">savedReadingsButton</a></li><li><a href="global.html#selectBuffer">selectBuffer</a></li><li><a href="global.html#selectCount">selectCount</a></li><li><a href="global.html#setCardLink">setCardLink</a></li><li><a href="global.html#setLandingLink">setLandingLink</a></li><li><a href="global.html#setSavedReadingsLink">setSavedReadingsLink</a></li><li><a href="global.html#tarotCards">tarotCards</a></li><li><a href="global.html#titles">titles</a></li><li><a href="global.html#toMenuPage">toMenuPage</a></li><li><a href="global.html#typeOutputInterval">typeOutputInterval</a></li><li><a href="global.html#typePrediction">typePrediction</a></li><li><a href="global.html#wooshCards">wooshCards</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 12 2023 19:18:30 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 12 2023 23:56:30 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
