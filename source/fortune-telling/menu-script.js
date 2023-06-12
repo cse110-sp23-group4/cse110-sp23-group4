@@ -1,6 +1,8 @@
 /**
- * @file JavaScript Code for menu.html - Last Modified 6/11/2023
+ * @file Script that controls the functionality of the menu page - Last Modified 6/11/2023
  * @author Samuel Au
+ * @author Nakul Nandhakumar
+ * @author Abijit Jayachandran
  */
 
 /**
@@ -62,9 +64,10 @@ function playClickSound() {
  * necessary actions when the landing page is clicked on by the user
  */
 function setLandingLink() {
-  setTimeout(function() {
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
     window.location.href = "landing.html";
-  }, 400);
+  });
 }
 
 /**
@@ -72,9 +75,10 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  setTimeout(function() {
+  const sound = document.getElementById("click");
+  sound.addEventListener("ended", function() {
     window.location.href = "saved.html";
-  }, 400);
+  });
 }
 
 /**
@@ -96,7 +100,7 @@ function createCategoryButtons() {
 
 window.addEventListener('DOMContentLoaded', () =>{
   createCategoryButtons();
-  playClickSound();
+  playClickSound(); 
 });
 
 /*

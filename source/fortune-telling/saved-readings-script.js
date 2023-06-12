@@ -60,7 +60,7 @@ function init() {
 }
 
 /**
- * Function that plays sound when buttons are clicked
+ * Adds event listeners to all buttons to play click sound effect.
  */
 function playClickSound() {
 	let buttons = document.getElementsByTagName("button");
@@ -76,9 +76,13 @@ function playClickSound() {
  * This function sends the user back to the menu page
  */
 function backToMenu() {
-	setTimeout(function() {
+	const sound = document.getElementById("click");
+	sound.addEventListener('ended', function (){
 		window.location.href = "menu.html";
-		}, 400);
+	});
+	// setTimeout(function() {
+	// 	window.location.href = "menu.html";
+	// 	}, 400);
 }
 
 /**
@@ -198,20 +202,20 @@ function displayFortunes() {
 		fortuneDate.classList.add("fortuneDate");
 		// Add Delete Button
 		let deleteButton = document.createElement('img');
-    deleteButton.src = "assets/saved-readings-page/trash.png";
-    deleteButton.style.borderRadius = '5px';
-    // Red border on mouse over
-    deleteButton.addEventListener('mouseover', () => {
-      deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
-    });
-    // No border color when not hovering
-    deleteButton.addEventListener('mouseout', () => {
-      deleteButton.style.boxShadow = '';
-    });
-    // Delete fortune on click
+		deleteButton.src = "assets/saved-readings-page/trash.png";
+		deleteButton.style.borderRadius = '5px';
+		// Red border on mouse over
+		deleteButton.addEventListener('mouseover', () => {
+		deleteButton.style.boxShadow = '0 0 10px 5px #ff0000';
+		});
+		// No border color when not hovering
+		deleteButton.addEventListener('mouseout', () => {
+		deleteButton.style.boxShadow = '';
+		});
+		// Delete fortune on click
 		deleteButton.addEventListener('click', () => {
-      deleteFortune(i);
-      displayFortunes();
+			deleteFortune(i);
+			displayFortunes();
 		});
 
 		// adds elements with fortune text, category, and date to the fortune div wrapper

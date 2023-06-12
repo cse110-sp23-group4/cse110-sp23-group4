@@ -68,12 +68,15 @@ enterButton.addEventListener('click', () => {
   playWoosh();
 });
 
+
+/* Add event listener to start music when DOMContentLoaded */
+document.addEventListener("DOMContentLoaded", startBackgroundMusic());
+
 /**
- * Function which detects the first click on the page
- * and automatically begins playing the background track
+ * Function which begins playing the background track
  */
-document.addEventListener("DOMContentLoaded", function() {
+function startBackgroundMusic() {
   let backgroundMusic = document.getElementById("music");
   backgroundMusic.volume = 0.1;
   backgroundMusic.play();
-});
+}
