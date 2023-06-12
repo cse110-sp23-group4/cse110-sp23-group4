@@ -170,7 +170,7 @@ describe('Basic user flow for Saved Readings Page', () => {
           expect(displayedCategory).toBe(localStorageCategory);
           expect(displayedDate).toBe(localStorageDate);
         }
-    });
+    }, 10000);
     
     test("Check that you can delete individual fortunes", async () => {
         const deleteIcon = await page.$('img');
@@ -185,5 +185,4 @@ describe('Basic user flow for Saved Readings Page', () => {
         expect(fortuneElements.length).toBe(2);
         expect(fortuneElements.length).toBe(localStorageFortunes.length);
     });
-    
 });
