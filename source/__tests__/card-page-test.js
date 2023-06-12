@@ -50,7 +50,7 @@ describe('Basic user flow for Fortune Generation Page', () => {
     }
   });
 
-  test('Check that boxShadow changes on hover', async () => {
+  test('Check that box-shadow changes on hover', async () => {
     const cards = await page.$$('.card');
     for(let i = 0; i < cards.length; i++){
       const oldShadow = await page.$eval('#card'+(i+1), card => {

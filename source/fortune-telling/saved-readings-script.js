@@ -218,11 +218,25 @@ function displayFortunes() {
 			deleteFortune(i);
 			displayFortunes();
 		});
-
+		// adds image based off category
+		console.log(fortuneCategory.innerHTML);
+		let fortuneImg = document.createElement('img');
+		if(fortuneCategory.innerHTML === 'Love'){
+			fortuneImg.src = `assets/card-page/love_back.png`;
+		}
+		else if(fortuneCategory.innerHTML === 'School'){
+			fortuneImg.src = `assets/card-page/school_back.png`;
+		}
+		else if(fortuneCategory.innerHTML === 'Life'){
+			fortuneImg.src = `assets/card-page/life_back.png`;
+		}
+		fortuneImg.style.display = 'block';
+		fortuneImg.style.margin = '0 auto';
 		// adds elements with fortune text, category, and date to the fortune div wrapper
 		fortuneInList.appendChild(fortuneText);
 		fortuneInList.appendChild(fortuneCategory);
 		fortuneInList.appendChild(fortuneDate);
+		fortuneInList.appendChild(fortuneImg);
 		fortuneInList.appendChild(deleteButton);
 		// adds fortune wrapper to history div wrapper
 		history.appendChild(fortuneInList);

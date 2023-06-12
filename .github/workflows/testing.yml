@@ -1,8 +1,10 @@
+# Github Action for Unit Testing
+# Author: Christian Lee
 name: Unit Tests
 
 on:
   push:
-    branches: 
+    branches:
       - '*'
   pull_request:
     branches: [ main ]
