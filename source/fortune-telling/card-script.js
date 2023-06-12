@@ -1,5 +1,5 @@
 /**
- * @file JavaScript Code for card.html - Last Modified: 06/04/2023
+ * @file JavaScript Code for card.html - Last Modified: 06/11/2023
  * @author Ezgi Bayraktaroglu
  * @author Helen Lin
  * @author Nakul Nandhakumar
@@ -119,7 +119,13 @@ function init() {
 
     // Remove select class so that old card does not get centered
 		tarotCards[i].classList.remove("select");
+
+    //Remove Box Shadow Styling if there is any
+    tarotCards[i].style.boxShadow = null;
   }
+
+  // Clear Selected Card Buffer
+  selectBuffer = [];
 
   // Reset all the cards to be facing down again
   for (let i = 0; i < tarotCards.length; i++) {
