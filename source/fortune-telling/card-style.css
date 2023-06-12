@@ -7,9 +7,7 @@
 
 /* Make entire page's background black with image */
 
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
-
 
 html {
   background: url(assets/card-page/backdrop.png) no-repeat center center fixed; 
@@ -41,7 +39,9 @@ html {
 }
 
 .buttons {
-  font-family: 'Domine', serif;
+  font-family: 'Hubballi', cursive;
+  font-weight: bold;
+  color: white;
   justify-content: center;
   gap: 40px;
   padding: 10px 0;

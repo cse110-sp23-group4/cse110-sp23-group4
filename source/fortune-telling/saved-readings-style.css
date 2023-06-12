@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
 .historyWrapper {
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
 }
 
 .fortune:hover {
-  background-color: green;
+  background-color: lightgreen;
 }
 
 #title {
@@ -41,8 +42,9 @@
   width: 200px;
   border: none;
   color: white;
-  font-size: 20px;
-  text-shadow: 2px 2px 3px #ad08c7;
+  font-family: 'Hubballi', cursive;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 button:hover {
@@ -56,15 +58,8 @@ body {
 
 h1, .fortuneText, .fortuneCategory, .fortuneDate {
   text-align: center;
-  font-family: 'Tangerine';
-  font-size: 40px;
-}
-
-.addClear {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+  font-family: 'Hubballi', cursive;
+  font-size: 25px;
 }
 
 .clearButton {
@@ -77,8 +72,9 @@ h1, .fortuneText, .fortuneCategory, .fortuneDate {
   width: 200px;
   border: none;
   color: white;
-  font-size: 20px;
-  text-shadow: 2px 2px 3px #ad08c7;
+  font-family: 'Hubballi', cursive;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 /* || Header Section */
@@ -89,4 +85,12 @@ h1, .fortuneText, .fortuneCategory, .fortuneDate {
   align-items: center;
   width: 90%;
   margin: 0 auto;
+}
+
+#start {
+  justify-self: start;
+}
+
+#end {
+  justify-self: end;
 }
