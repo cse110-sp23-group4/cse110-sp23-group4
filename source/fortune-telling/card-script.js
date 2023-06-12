@@ -133,7 +133,7 @@ function init() {
   typePrediction(`Please Select ${selectCount} Card.`);
 
   /* Play sound when pressing buttons */
-   playClickSound();
+   //playClickSound();
 
   /* Add event listener for predicting fortune button */
   predictButton.addEventListener("click", generatePrediction);
@@ -161,15 +161,15 @@ function init() {
 /**
  * Function that plays sound when buttons are clicked
  */
-function playClickSound() {
-  let buttons = document.getElementsByTagName("button");
-  for (let button of buttons) {
-    button.addEventListener('click', () => {
-      const sound = document.getElementById("click");
-      sound.play();
-    });
-  }
-}
+// function playClickSound() {
+//   let buttons = document.getElementsByTagName("button");
+//   for (let button of buttons) {
+//     button.addEventListener('click', () => {
+//       const sound = document.getElementById("click");
+//       sound.play();
+//     });
+//   }
+// }
 
 /**
  * Function that changes to page back to the main menu (only after click sound 

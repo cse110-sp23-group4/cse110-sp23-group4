@@ -79,10 +79,10 @@ function setLandingLink() {
  * necessary actions when the saved readings page is clicked
  */
 function setSavedReadingsLink() {
-  const sound = document.getElementById("click");
-  sound.addEventListener("ended", function() {
+  //const sound = document.getElementById("click");
+  //sound.addEventListener("ended", function() {
     window.location.href = "saved.html";
-  });
+  //});
 }
 
 /**
