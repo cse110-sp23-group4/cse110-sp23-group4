@@ -185,6 +185,7 @@ describe('Basic user flow for Saved Readings Page', () => {
         expect(fortuneElements.length).toBe(2);
         expect(fortuneElements.length).toBe(localStorageFortunes.length);
     });
+
     test("Check if a new fortune can be added", async () => {
         console.log("Checking if a new fortune can be added...");
 
@@ -204,8 +205,8 @@ describe('Basic user flow for Saved Readings Page', () => {
         // Simulate adding a new fortune
         const newFortuneText = 'New fortune text';
         const newFortuneCategory = 'New category';
-        await page.type('#fortuneText', newFortuneText);
-        await page.type('#fortuneCategory', newFortuneCategory);
+        await page.type('.fortuneText', newFortuneText);
+        await page.type('.fortuneCategory', newFortuneCategory);
         await page.click('#addFortuneButton');
         await page.waitForSelector('.fortune');
       
@@ -227,5 +228,5 @@ describe('Basic user flow for Saved Readings Page', () => {
         let lastLocalStorageFortune = localStorageFortunes[localStorageFortunes.length - 1];
         expect(lastLocalStorageFortune[0]).toBe(newFortuneText);
         expect(lastLocalStorageFortune[1]).toBe(newFortuneCategory);
-      });
+    });
 });
