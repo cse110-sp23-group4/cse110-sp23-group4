@@ -61,21 +61,13 @@ function enterHut() {
 
 enterButton.addEventListener('click', enterHut);
 
-/* Add the listener to the landing page button */
-// enterButton.addEventListener('click', () => {
-//   setTimeout(playWoosh, 500);
-//   setTimeout(enterHut, 1000);
-// });
+/* Reduce music volume */
+document.addEventListener("DOMContentLoaded", reduceMusicVol());
 
-
-// /* Add event listener to start music when DOMContentLoaded */
-// document.addEventListener("DOMContentLoaded", startBackgroundMusic());
-
-// /**
-//   * Reduce background music volume
-//   */
-// function startBackgroundMusic() {
-//   let backgroundMusic = document.getElementById("music");
-//   backgroundMusic.volume = 0.1;
-//   backgroundMusic.play(); 
-// }
+/**
+  * Reduces background music volume to 0.1
+  */
+function reduceMusicVol() {
+  let backgroundMusic = document.getElementById("music");
+  backgroundMusic.volume = 0.1;
+}
