@@ -209,6 +209,9 @@ async function generatePrediction() {
    */
   const predictOut = document.getElementById('output');
 
+  // Clear fortuneText variable
+  fortuneText = "";
+
   // Reset all the cards to be facing down again
   let category = JSON.parse(localStorage.getItem("category"));
   for (let i = 0; i < tarotCards.length; i++) {
